@@ -16,10 +16,10 @@ Meteor.methods({
           throw err;  
         }
         
-        done(data);
+        done(err, data);
       });
     });
 
-    return response;
+    return response.result;
   }
 });

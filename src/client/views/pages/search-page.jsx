@@ -12,10 +12,9 @@ SearchPage = React.createClass({
     Meteor.call('search', text, function(err, result) {
       if (that.isMounted()) {
         if (err) {
-          that.setState({ error: err.getMessage() });
+          that.setState({ error: err.reason });
         } else {
-          // Not sure why it's getting wrapping in "error"
-          that.setState({ results: result.error });
+          that.setState({ results: result });
         }
 
         that.setState({ appLoading: false });
@@ -58,7 +57,7 @@ SearchPage = React.createClass({
             onSearch={this.search} />
 
         <div className="row">
-          <div className="col s8 offset-s2">
+          <div className="col m8 offset-m2 s10 offset-s1">
             {$$contents}
           </div>
         </div>

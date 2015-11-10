@@ -35,10 +35,10 @@ FlowRouter.route('/s/:search', {
   name: "Search"
 });
 
-FlowRouter.route('/v/:youtubeId', {
+FlowRouter.route('/v/:videoId', {
   action: function (params, queryParams) {
     ReactLayout.render(MainLayout, {
-      content: <ViewPage youtubeId={params.youtubeId} />,
+      content: <ViewPage videoId={params.videoId} />,
       allowGoBack: true
     });
   },
