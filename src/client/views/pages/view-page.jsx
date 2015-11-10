@@ -3,8 +3,16 @@ ViewPage = React.createClass({
     return {
       appLoading: true,
       result: [],
-      error: false
+      error: false,
+      currentTime: 0,
+      currentDuration: 0
     }
+  },
+  handleCurrentTime(time, duration) {
+    this.setState({
+      currentTime: time,
+      currentDuration: duration
+    });
   },
   callVideo(videoId) {
     var that = this;
@@ -42,13 +50,15 @@ ViewPage = React.createClass({
         <div>
           {$$error}
 
-          <VideoPlayerComponent videoId={this.state.result.id} />
+          <VideoPlayerComponent
+            videoId={this.state.result.id}
+            currentTimeCallback={this.handleCurrentTime} />
 
           Plip Timeline goes here
-          Floating button goes here
           <div className="row">
             <div className="col m8 offset-m2 s10 offset-s1">
               Comments go here
+              {this.state.currentTime}
             </div>
           </div>
         </div>

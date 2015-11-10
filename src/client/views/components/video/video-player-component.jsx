@@ -1,7 +1,29 @@
 VideoPlayerComponent = React.createClass({
   getInitialState() {
     return {
-      player: null
+      player: null,
+      timer: null
+    }
+  },
+  refresh() {
+    var that  = this;
+    var timer = setInterval(function() {
+      var callback = that.props.currentTimeCallback;
+      var player   = that.state.player;
+
+      if (player !== null) {
+        var time     = player.getCurrentTime();
+        var duration = player.getDuration();
+
+        callback(time, duration);
+      }
+    }, 500);
+
+    this.setState({ timer: timer });
+  },
+  killRefresh() {
+    if (this.state.timer !== null) {
+      clearTimeout(this.state.timer);
     }
   },
   componentDidMount() {
@@ -24,6 +46,11 @@ VideoPlayerComponent = React.createClass({
     };
 
     YT.load();
+
+    this.refresh();
+  },
+  componentWillUnmount() {
+    this.killRefresh();
   },
   render() {
     return (
