@@ -1,0 +1,84 @@
+.slide-container {
+  background-color: white;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide-inner {
+  display: block;
+  width: 200%;
+}
+
+.slide {
+  background-color: $brand-color;
+  box-shadow: 0 0 15px white;
+  float: left;
+  min-height: 100vh;
+  position: relative;
+  width: 50%;
+}
+
+/*
+ |--------------------------------------------
+ | Slide Left
+ |--------------------------------------------
+ |
+ | Have the new slide slide in from the right
+ | to the left.
+ |
+ */
+.slide-left-enter {
+  transform: translateX(100%);
+  z-index: 100;
+
+  &.slide-left-enter-active {
+    transform: translateX(0px);
+    transition: transform 300ms ease-in;
+  }
+}
+
+.slide-left-leave {
+  opacity: 1;
+  transform: translateX(-100%) scale(1);
+  z-index: 1;
+
+  &.slide-left-leave-active {
+    opacity: .8;
+    transform: translateX(-100%) scale(0.95);
+    transition: transform 300ms ease-in,
+                opacity 300ms ease-out;
+  }
+}
+
+/*
+ |--------------------------------------------
+ | Slide Right
+ |--------------------------------------------
+ |
+ | Have the new slide slide in from the left
+ | to the right.
+ |
+ */
+.slide-right-enter {
+  transform: translateX(-100%);
+  z-index: 100;
+
+  &.slide-right-enter-active {
+    transform: translateX(0px);
+    transition: transform 300ms ease-in;
+  }
+}
+
+.slide-right-leave {
+  opacity: 1;
+  transform: translateX(-100%) scale(1);
+  z-index: 1;
+
+  &.slide-right-leave-active {
+    opacity: .8;
+    transform: translateX(-100%) scale(0.95);
+    transition: transform 300ms ease-in,
+                opacity 300ms ease-out;
+  }
+}

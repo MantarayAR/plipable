@@ -1,0 +1,21 @@
+/*
+ |---------------------------------------------
+ | Nav
+ |---------------------------------------------
+ |
+ |
+ */
+
+nav {
+  @extend .grey.lighten-5;
+  color: $brand-color;
+
+  a {
+    color: $brand-color;    
+  }
+
+  .brand-logo {
+    color: $brand-color;
+    font-family: $font-family-heading;
+  }
+}

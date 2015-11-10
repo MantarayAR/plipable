@@ -1,0 +1,33 @@
+/*
+ |---------------------------------------------
+ | Splash Page
+ |---------------------------------------------
+ |
+ |
+ */
+
+.splash-page {
+  color: #f0f0f0;
+  text-align: center;
+
+  .at-form {
+    .header {
+      font-size: 2rem;
+    }
+  }
+}
+
+.splash-page__logo {
+  margin-top: 10vh;
+}
+
+.splash-page__heading {
+  font-family: $font-family-heading;
+  font-size: 3rem;
+}
+
+.splash-page__description {
+  font-family: $font-family;
+  font-size: 2rem;
+  margin-bottom: 20vh;
+}
