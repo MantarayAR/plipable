@@ -10,8 +10,8 @@ HomePage = React.createClass({
   render() {
     var content = <SplashPage />
 
-    if ( this.data.isLoggedIn || this.props.forceDisplay ) {
-      content = <SearchPage searchText={false} />;
+    if ( this.data.isLoggedIn) {
+      FlowRouter.go('/s');
     }
 
     return (

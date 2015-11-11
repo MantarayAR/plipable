@@ -10,6 +10,7 @@ nav {
   @extend .grey.lighten-5;
   color: $brand-color;
 
+  ul a,
   a {
     color: $brand-color;    
   }
@@ -18,4 +19,8 @@ nav {
     color: $brand-color;
     font-family: $font-family-heading;
   }
+}
+
+.sidenav {
+  z-index: 999999999;
 }
