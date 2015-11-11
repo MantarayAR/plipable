@@ -5,7 +5,7 @@ Chat on videos. Your messages are automatically timestamped to where you initial
 
 [Visit the Live Website!](http://plipit.meteor.com)
 
-[![Plit it](documentation/images/demo.pnh)](http://plipit.meteor.com)
+[![Plit it](documentation/images/demo.png)](http://plipit.meteor.com)
 
 
 ## Running the app
