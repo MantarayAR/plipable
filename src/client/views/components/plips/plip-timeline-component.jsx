@@ -42,8 +42,10 @@ PlipTimelineComponent = React.createClass({
     // Draw plips in groups
     var $$children = [];
     var buckets = [];
-    var bucketSize = duration * 15.0 / $(window).width(); // in seconds
+    //var bucketSize = duration * 15.0 / $(window).width(); // in seconds
+    var bucketSize = Math.log( duration );
 
+    // Sort the plips
     this.data.plips.sort(function(a,b) {
       return a.videoTimestamp > b.videoTimestamp;
     });
@@ -51,16 +53,18 @@ PlipTimelineComponent = React.createClass({
     var currentBucket = 0;
 
     if (this.data.plips.length > 0) {
-      buckets[currentBucket] = [this.data.plips[0]];
-      for (var i = 1; i < this.data.plips.length; i++) {
+      var sortedPlips = _.sortBy(this.data.plips, "videoTimestamp");
+
+      buckets[currentBucket] = [sortedPlips[0]];
+      for (var i = 1; i < sortedPlips.length; i++) {
         if (buckets[currentBucket][0].videoTimestamp <
-            this.data.plips[i].videoTimestamp - bucketSize ) {
+            sortedPlips[i].videoTimestamp - bucketSize ) {
           // New bucket!
           currentBucket++;
-          buckets[currentBucket] = [this.data.plips[i]];
+          buckets[currentBucket] = [sortedPlips[i]];
         } else {
           // Add to old bucket
-          buckets[currentBucket].push(this.data.plips[i]);
+          buckets[currentBucket].push(sortedPlips[i]);
         }
       }
 
