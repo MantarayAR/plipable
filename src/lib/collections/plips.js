@@ -9,6 +9,11 @@ PlipsSchema = new SimpleSchema({
     type: String,
     label: "The twitter user name"
   },
+  thumbnail: {
+    type: String,
+    label: "Thumbnail",
+    optional: true
+  },
   message: {
     type: String,
     max: 1000,
