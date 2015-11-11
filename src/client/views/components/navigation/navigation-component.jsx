@@ -45,13 +45,11 @@ NavigationComponent = React.createClass({
     var title     = this.props.title || TAPi18n.__('app_name') || 'Plip it';
     var timestamp = this.state.timestamp;
 
-    var goBackClasses = 'nav__go-back button-collapse ';
+    searchButtonClasses = 'nav__button button-collapse right ';
 
-    // TODO refactor this (it now means that we are on the search page)
-    if (this.props.allowGoBack) {
-      goBackClasses += '';
-    } else {
-      goBackClasses += 'hide';
+    var routeName = FlowRouter.getRouteName();
+    if (routeName === "Home" || routeName === "Search" ) {
+      searchButtonClasses += 'hide';
     }
 
     if (this.props.hideNavigation === true) {
@@ -86,7 +84,7 @@ NavigationComponent = React.createClass({
                   className="button-collapse">
                 <i className="material-icons">menu</i>
                 </a>
-              <a onClick={this.handleSearch} className={goBackClasses}>
+              <a onClick={this.handleSearch} className={searchButtonClasses}>
                 <i className="fa fa-search"></i>
               </a>
               <ul className="right hide-on-med-and-down">
