@@ -29,6 +29,9 @@ ViewPage = React.createClass({
       }
     });
   },
+  seek(time) {
+    this.refs.player.seek(time);
+  },
   componentWillReceiveProps(nextProps) {
     this.callVideo(nextProps.videoId);
   },
@@ -51,14 +54,24 @@ ViewPage = React.createClass({
           {$$error}
 
           <VideoPlayerComponent
+            ref="player"
             videoId={this.state.result.id}
             currentTimeCallback={this.handleCurrentTime} />
 
-          Plip Timeline goes here
+          <PlipTimelineComponent
+              seek={this.seek}
+              videoId={this.props.videoId}
+              currentTime={this.state.currentTime}
+              currentDuration={this.state.currentDuration} />
+
           <div className="row">
             <div className="col m8 offset-m2 s10 offset-s1">
-              Comments go here
-              {this.state.currentTime}
+              <NewPlipComponent
+                  videoId={this.props.videoId}
+                  currentTime={this.state.currentTime} />
+              <PlipsListComponent
+                  videoId={this.props.videoId}
+                  currentTime={this.state.currentTime} />
             </div>
           </div>
         </div>

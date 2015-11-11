@@ -5,19 +5,26 @@ VideoPlayerComponent = React.createClass({
       timer: null
     }
   },
+  seek(time) {
+    var player = this.state.player;
+
+    if (player != null && player.seekTo != null) {
+      player.seekTo(time);
+    }
+  },
   refresh() {
     var that  = this;
     var timer = setInterval(function() {
       var callback = that.props.currentTimeCallback;
       var player   = that.state.player;
 
-      if (player !== null) {
+      if (player != null && player.getCurrentTime != null) {
         var time     = player.getCurrentTime();
         var duration = player.getDuration();
 
         callback(time, duration);
       }
-    }, 500);
+    }, 1000);
 
     this.setState({ timer: timer });
   },

@@ -82,3 +82,37 @@
                 opacity 300ms ease-out;
   }
 }
+
+/*
+ |--------------------------------------------
+ | Slide Down
+ |--------------------------------------------
+ |
+ | Have the new slide slide in from the right
+ | to the down.
+ |
+ */
+.slide-down-enter {
+  max-height: 0;
+  opacity: .1;
+  z-index: 100;
+
+  &.slide-down-enter-active {
+    max-height: 500px;
+    opacity: 1;
+    transition: max-height 1000ms ease-in,
+                opacity 1000ms ease-in;
+  }
+}
+
+.slide-down-leave {
+  max-height: 500px;
+  opacity: 1;
+
+  &.slide-down-leave-active {
+    max-height: 0;
+    opacity: .9;
+    transition: max-height 1000ms ease-in,
+                opacity 1000ms ease-out;
+  }
+}

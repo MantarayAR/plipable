@@ -39,6 +39,19 @@ MainLayout = React.createClass({
         </div>
     );
 
+    // TODO handle transitiontype none
+    if (transitionType === 'none') {
+      return (
+        <div>
+          <div className="slide-container">
+            <div className="slide-inner">
+              {content}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div className="slide-container">

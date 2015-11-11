@@ -15,7 +15,8 @@ PlipsSchema = new SimpleSchema({
     label: "The plip message"
   },
   videoTimestamp: {
-    type: String,
+    type: Number,
+    decimal: true,
     label: "The time that the plip was posted in the video"
   },
   createdAt: {

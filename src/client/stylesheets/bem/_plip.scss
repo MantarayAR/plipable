@@ -1,0 +1,120 @@
+.plip__floating-button {
+  position: relative;
+
+  .btn-floating {
+    i {
+      color: $brand-color;
+    }
+  }
+
+  a {
+    color: $brand-color;
+    margin-right: -28px;
+    margin-top: -28px;
+    position: absolute;
+    right: 0%;
+  }
+}
+
+.plips__list {
+  display: block;
+  margin-top: 5vh;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.plip__modal-overlay {
+  background-color: rgba(50,50,50,0.2);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99999;
+}
+
+.plip__modal {
+  background-color: white;
+  border-radius: 0;
+  bottom: 0;
+  box-shadow: 0 0 10px 0 0 30px rgba(0, 0, 0, 0.4);
+  height: 20vh;
+  left: 50%;
+  margin-left: -50%;
+  min-height: 200px;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+.plip__timeline {
+  border-bottom: 1px solid white;
+  box-shadow-bottom: 0 0 5px rgba(0,0,0,.4);
+  height: 50px;
+  position: relative;
+}
+
+$plip-timeline-height: 50px;
+
+.plip__timeline-line {
+  border-left: 2px solid $accent-color;
+  height: $plip-timeline-height;
+  left: 0;
+  transition: left 800ms linear;
+  position: absolute;
+  width: 0;
+}
+
+.plip__timeline-circle {
+  background-color: $accent-color;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 2px 5px 0px, 
+              rgba(0, 0, 0, 0.117647) 0px 2px 10px 0px;
+  height: 20px;
+  margin-top: 15px;
+  position: absolute;
+  width: 20px;
+}
+
+.plip__timeline-circle--1 {
+  $diameter: 5px;
+  margin-top: (($plip-timeline-height - $diameter) / 2);
+  height: $diameter;
+  width: $diameter;
+  z-index: 5000;
+}
+
+.plip__timeline-circle--2 {
+  $diameter: 8px;
+  margin-top: (($plip-timeline-height - $diameter) / 2);
+  height: $diameter;
+  width: $diameter;
+  z-index: 4000;
+}
+
+.plip__timeline-circle--3 {
+  $diameter: 15px;
+  margin-top: (($plip-timeline-height - $diameter) / 2);
+  height: $diameter;
+  width: $diameter;
+  z-index: 3000;
+}
+
+.plip__timeline-circle--4 {
+  $diameter: 20px;
+  margin-top: (($plip-timeline-height - $diameter) / 2);
+  height: $diameter;
+  width: $diameter;
+  z-index: 2000;
+}
+
+.plip__timeline-circle--5 {
+  $diameter: 30px;
+  margin-top: (($plip-timeline-height - $diameter) / 2);
+  height: $diameter;
+  width: $diameter;
+  z-index: 1000;
+}
