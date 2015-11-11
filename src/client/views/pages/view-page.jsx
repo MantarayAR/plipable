@@ -50,14 +50,16 @@ ViewPage = React.createClass({
       }
 
       $$contents = (
-        <div>
+        <div className="view">
           {$$error}
-
-          <VideoPlayerComponent
-            ref="player"
-            videoId={this.state.result.id}
-            currentTimeCallback={this.handleCurrentTime} />
-
+          <div className="row view__player">
+            <div className="col s12 m8 offset-m2 l6 offset-l3">
+              <VideoPlayerComponent
+                ref="player"
+                videoId={this.state.result.id}
+                currentTimeCallback={this.handleCurrentTime} />
+            </div>
+          </div>
           <PlipTimelineComponent
               seek={this.seek}
               videoId={this.props.videoId}

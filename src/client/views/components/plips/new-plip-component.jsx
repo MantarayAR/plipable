@@ -1,4 +1,10 @@
 NewPlipComponent = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      isLoggedIn: !! Meteor.userId()
+    }
+  },
   getInitialState: function() {
     return {
       modalIsOpen: false,
@@ -21,6 +27,10 @@ NewPlipComponent = React.createClass({
   },
   render() {
     ReactModal.setAppElement(document.getElementById('react-root'));
+
+    if (! this.data.isLoggedIn) {
+      return <div></div>
+    }
 
     return (
       <div className="plip__floating-button">

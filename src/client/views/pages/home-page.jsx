@@ -10,7 +10,7 @@ HomePage = React.createClass({
   render() {
     var content = <SplashPage />
 
-    if ( this.data.isLoggedIn ) {
+    if ( this.data.isLoggedIn || this.props.forceDisplay ) {
       content = <SearchPage searchText={false} />;
     }
 

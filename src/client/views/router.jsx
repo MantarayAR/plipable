@@ -15,6 +15,7 @@ FlowRouter.route('/s', {
     ReactLayout.render(MainLayout, {
       content: (
         <HomePage
+          forceDisplay={true}
           hideNavigation={() => Meteor.userId() === null } />
       )
     });

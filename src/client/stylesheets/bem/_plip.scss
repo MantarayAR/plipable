@@ -2,6 +2,8 @@
   position: relative;
 
   .btn-floating {
+    z-index: 6000;
+
     i {
       color: $brand-color;
     }

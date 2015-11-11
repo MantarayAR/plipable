@@ -9,6 +9,8 @@ SplashPage = React.createClass({
         <div className="row">
           <div className="col s6 offset-s3">
             <LoginComponent />
+
+            <p>Or, <a href="/s">search for videos</a> without signing in</p>
           </div>
         </div>
       </div>
