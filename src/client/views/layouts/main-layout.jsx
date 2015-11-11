@@ -22,7 +22,10 @@ MainLayout = React.createClass({
     var item           = this.props.content;
     var key            = item.type.displayName;
     var title          = this.props.content.props.title || '';
-    var hideNavigation = this.props.content.props.hideNavigation || false;
+    var hideNavigation = (
+      this.props.content.props.hideNavigation ?
+      this.props.content.props.hideNavigation() : false )
+      || false;
     var content        = (
         <div key={key} className="slide">
           <header>
@@ -38,19 +41,6 @@ MainLayout = React.createClass({
           </footer>
         </div>
     );
-
-    // TODO handle transitiontype none
-    if (transitionType === 'none') {
-      return (
-        <div>
-          <div className="slide-container">
-            <div className="slide-inner">
-              {content}
-            </div>
-          </div>
-        </div>
-      );
-    }
 
     return (
       <div>

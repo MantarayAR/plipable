@@ -28,7 +28,7 @@ SearchPage = React.createClass({
     this.callSearch(this.props.searchText);
   },
   search(text) {
-    FlowRouter.go('/s/' + encodeURIComponent(text));
+    FlowRouter.setQueryParams({ search: encodeURIComponent(text) });
   },
   render() {
     var $$error = '';

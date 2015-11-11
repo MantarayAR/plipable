@@ -1,11 +1,20 @@
 FlowRouter.route('/', {
   action: function(params, queryParams) {
-    ReactLayout.render(MainLayout, {
-      content: (
-        <HomePage
-          hideNavigation={() => Meteor.userId() === null } />
-      )
-    });
+    if (!!Meteor.userId()) {
+      ReactLayout.render(MainLayout, {
+        content: (
+          <SearchPage
+            searchText={queryParams.search} />
+        )
+      });
+    } else {
+      ReactLayout.render(MainLayout, {
+        content: (
+          <HomePage
+            hideNavigation={() => Meteor.userId() === null } />
+        )
+      });
+    }
   },
   name: "Home"
 });
@@ -14,22 +23,8 @@ FlowRouter.route('/s', {
   action: function(params, queryParams) {
     ReactLayout.render(MainLayout, {
       content: (
-        <HomePage
-          forceDisplay={true}
-          hideNavigation={() => Meteor.userId() === null } />
-      )
-    });
-  },
-  name: "Home Search"
-});
-
-FlowRouter.route('/s/:search', {
-  action: function (params, queryParams) {
-    ReactLayout.render(MainLayout, {
-      content: (
         <SearchPage
-            transitionType="none"
-            searchText={params.search} />
+          searchText={queryParams.search} />
       )
     });
   },
