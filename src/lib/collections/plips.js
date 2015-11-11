@@ -5,6 +5,11 @@ PlipsSchema = new SimpleSchema({
     type: String,
     label: "The youtube video id"
   },
+  deleted: {
+    type: Boolean,
+    label: "Is the plip deleted?",
+    optional: true
+  },
   username: {
     type: String,
     label: "The twitter user name"
@@ -16,7 +21,7 @@ PlipsSchema = new SimpleSchema({
   },
   message: {
     type: String,
-    max: 1000,
+    max: 250,
     label: "The plip message"
   },
   videoTimestamp: {
@@ -54,7 +59,10 @@ if ( Meteor.isServer ) {
     check(videoId, String);
 
     return Plips.find({
-      videoId: videoId
+      videoId: videoId,
+      deleted: {
+        $ne: true
+      }
     });
   });
 
@@ -62,7 +70,10 @@ if ( Meteor.isServer ) {
     check(username, String);
 
     return Plips.find({
-      username: username
+      username: username,
+      deleted: {
+        $ne: true
+      }
     });
   });
 }

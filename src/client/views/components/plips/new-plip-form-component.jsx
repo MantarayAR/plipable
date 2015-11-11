@@ -30,7 +30,11 @@ NewPlipFormComponent = React.createClass({
         that.setState({ alreadySending: false });
 
         if (err) {
-          Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
+          if (err.reason) {
+            Materialize.toast(err.reason, 3000, 'red lighten-1')
+          } else {
+            Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
+          }
         } else {
           that.closeModal();
           Materialize.toast('Post Successful', 4000)
@@ -50,7 +54,7 @@ NewPlipFormComponent = React.createClass({
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
-              <textarea atuoFocus ref="comment" id="plip-comment" className="materialize-textarea"></textarea>
+              <textarea autoFocus maxLength="250" ref="comment" id="plip-comment" className="materialize-textarea"></textarea>
               <label htmlFor="plip-comment">Your comment @ {currentTime}</label>
             </div>
 
