@@ -4,7 +4,7 @@ PlipsListComponent = React.createClass({
     var loaded = Meteor.subscribe("plips", this.props.videoId);
     var currentTime = this.props.currentTime;
 
-    var lowTime = Math.max(0, currentTime - 20);
+    var lowTime = Math.max(-1, currentTime - 20);
     var highTime = currentTime + 1;
 
     return {
