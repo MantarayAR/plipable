@@ -20,12 +20,19 @@ NavigationComponent = React.createClass({
     e.preventDefault();
     FlowRouter.go('/s');
   },
+  handleLogin(e) {
+    e.preventDefault();
+
+    Meteor.loginWithTwitter({}, function () {
+      FlowRouter.reload();
+    });
+  },
   handleLogout(e) {
     e.preventDefault();
 
     Meteor.logout(function(err) {
       if (FlowRouter.current().path === '/') {
-        FlowRouter.reload(); 
+        FlowRouter.reload();
       }
       FlowRouter.redirect('/');
     });
@@ -68,6 +75,8 @@ NavigationComponent = React.createClass({
       $$navItems.push(<li key="logout"><a href="#!" onClick={this.handleLogout}>Logout</a></li>);
     } else {
       $$navItems.unshift(<li key="home"><a href="#!" onClick={this.handleHome}>Home</a></li>);
+      $$navItems.push(<li key="divider1" className="divider"></li>);
+      $$navItems.push(<li key="login"><a href="#!" onClick={this.handleLogin}>Login</a></li>);
     }
 
     var navDropdown = 'nav-dropdown-' + timestamp;
