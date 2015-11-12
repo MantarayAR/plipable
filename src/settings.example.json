@@ -5,6 +5,11 @@
   "kadira_app_secret": "",
   "google_key": "",
   "public": {
-    "site_url": ""
+    "site_url": "",
+    "analyticsSettings": {
+      "Google Analytics" : {
+        "trackingId" : ""
+      }
+    }
   }
 }
