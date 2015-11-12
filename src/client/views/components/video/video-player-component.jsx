@@ -44,7 +44,11 @@ VideoPlayerComponent = React.createClass({
         // Events like ready, state change, 
         events: {
           onReady: function (event) {
-            event.target.playVideo();
+            // don't autoplay the video for android devices
+            // due to a bug
+            if ( ! window.isMobile() ) {
+              event.target.playVideo();
+            }
           }
         }
       });
