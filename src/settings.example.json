@@ -1,6 +1,8 @@
 {
   "twitter_client_id": "",
   "twitter_secret": "",
+  "kadira_app_id": "",
+  "kadira_app_secret": "",
   "google_key": "",
   "public": {
     "site_url": ""
