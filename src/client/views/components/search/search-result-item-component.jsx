@@ -2,7 +2,13 @@ SearchResultItemComponent = React.createClass({
   handleClick(e) {
     e.preventDefault();
 
-    FlowRouter.go('/v/' + this.props.result.id.videoId);
+    var id = this.props.result.id.videoId;
+
+    if (id == null) {
+      id = this.props.result.id;
+    }
+
+    FlowRouter.go('/v/' + id);
   },
   render() {
     var result      = this.props.result;
