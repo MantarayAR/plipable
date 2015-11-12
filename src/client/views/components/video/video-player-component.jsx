@@ -33,32 +33,54 @@ VideoPlayerComponent = React.createClass({
       clearTimeout(this.state.timer);
     }
   },
-  componentDidMount() {
-    var videoId = this.props.videoId;
-    var that    = this;
-    onYouTubeIframeAPIReady = function () {
-      var player = new YT.Player("videoplayer", {
-        height: $('body').width() * 400.0 / 600.0, 
-        width: $('body').width(), 
-        videoId: videoId, 
-        // Events like ready, state change, 
-        events: {
-          onReady: function (event) {
-            // don't autoplay the video for android devices
-            // due to a bug
-            if ( ! window.isMobile() ) {
-              event.target.playVideo();
-            }
+  checkEvent(event) {
+    // TODO sometimes the target does not have a getVideoData function
+
+    var newVideoId = event.target.getVideoData().video_id
+
+    if (newVideoId !== this.props.videoId) {
+      FlowRouter.setParams({ videoId: newVideoId });
+    }
+  },
+  mountVideo(videoId, checkEventCallback) {
+    var player = new YT.Player("videoplayer", {
+      height: $('body').width() * 400.0 / 600.0, 
+      width: $('body').width(), 
+      videoId: videoId, 
+      // Events like ready, state change, 
+      events: {
+        onReady: function (event) {
+          // don't autoplay the video for android devices
+          // due to a bug
+          if ( ! window.isMobile() ) {
+            event.target.playVideo();
           }
+        },
+        onStateChange: function(event) {
+          checkEventCallback(event);
+        },
+        onApiChange: function(event) {
+          checkEventCallback(event);
         }
-      });
+      }
+    });
 
-      that.setState({ player: player });
-    };
-
-    YT.load();
+    this.setState({ player: player });
 
     this.refresh();
+  },
+  componentWillReceiveProps(nextProps) {
+    if (this.props.videoId !== nextProps.videoId) {
+      $('.videoplayer').html('<div id="videoplayer"></div>');
+      this.mountVideo(nextProps.videoId, this.checkEvent);
+    }
+  },
+  componentDidMount() {
+    onYouTubeIframeAPIReady = function () {
+      this.mountVideo(this.props.videoId, this.checkEvent);
+    }.bind(this);
+
+    YT.load();
   },
   componentWillUnmount() {
     this.killRefresh();

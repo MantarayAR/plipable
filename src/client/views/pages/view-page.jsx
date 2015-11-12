@@ -56,7 +56,7 @@ ViewPage = React.createClass({
             <div className="col s12 m8 offset-m2 l6 offset-l3">
               <VideoPlayerComponent
                 ref="player"
-                videoId={this.state.result.id}
+                videoId={this.props.videoId}
                 currentTimeCallback={this.handleCurrentTime} />
             </div>
           </div>
