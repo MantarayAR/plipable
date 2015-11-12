@@ -8,6 +8,7 @@ SearchPage = React.createClass({
   },
   callSearch(text) {
     var that = this;
+    text = text || '';
 
     Meteor.call('search', text, function(err, result) {
       if (that.isMounted()) {
