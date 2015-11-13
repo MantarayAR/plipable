@@ -1,7 +1,8 @@
 Plip it
 =======
 
-[![Stories in Ready](https://badge.waffle.io/MantarayAR/plip-it.png?label=ready&title=Ready)](http://waffle.io/MantarayAR/plip-it)
+[![Stellarnauts Experience](http://stellarnauts.meteor.com/api/MantarayAR/plip-it/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/MantarayAR/plip-it)
+ [![Stories in Ready](https://badge.waffle.io/MantarayAR/plip-it.png?label=ready&title=Ready)](http://waffle.io/MantarayAR/plip-it)
 
 Chat on videos. Your messages are automatically timestamped to where you initially wanted to post them!
 
