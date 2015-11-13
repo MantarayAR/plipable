@@ -18,8 +18,6 @@ Meteor.methods({
     var username  = Meteor.user().services.twitter.screenName;
     var thumbnail = Meteor.user().services.twitter.profile_image_url_https || '';
 
-    dispatch(new AnalyticsEventCommand(), 'plip', 'New Plip', videoId);
-
     dispatch(new AddNewPlipCommand(), videoId, username, thumbnail, message, videoTimestamp);
   },
   delete: function(plipId) {
