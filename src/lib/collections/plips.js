@@ -19,6 +19,21 @@ PlipsSchema = new SimpleSchema({
     label: "Thumbnail",
     optional: true
   },
+  image: {
+    type: Object,
+    label: "Plip Image",
+    optional: true
+  },
+  'image.url': {
+    type: String,
+    label: "Plit Image Url",
+    optional: true
+  },
+  'image.type': {
+    type: String,
+    label: "Where the image is from",
+    optional: true
+  },
   message: {
     type: String,
     max: 250,

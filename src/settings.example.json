@@ -4,6 +4,7 @@
   "kadira_app_id": "",
   "kadira_app_secret": "",
   "google_key": "",
+  "giphy_key": "",
   "public": {
     "site_url": "",
     "analyticsSettings": {

@@ -121,3 +121,12 @@ $plip-timeline-height: 50px;
   width: $diameter;
   z-index: 1000;
 }
+
+.plip__image-watermark {
+  margin-left: 25px;
+  max-width: 150px;
+
+  img {
+    width: 100%;
+  }
+}

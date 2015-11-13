@@ -1,2 +1,6 @@
+# System Files >.>
+.DS_Store
+
+# Settings
 src/settings.json
 src/settings.prod.json

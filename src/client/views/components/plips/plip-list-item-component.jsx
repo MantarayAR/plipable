@@ -32,7 +32,7 @@ PlipListItemComponent = React.createClass({
     var currentTime = this.props.plip.videoTimestamp;
     currentTime     = __.Time.humanize(currentTime);
 
-    var imageUrl = this.props.plip.thumbnail;
+    var thumbnail = this.props.plip.thumbnail;
     var username = this.props.plip.username;
 
     var $$delete = '';
@@ -45,21 +45,43 @@ PlipListItemComponent = React.createClass({
       );
     }
 
-    var $$image = (
+    var $$thumbnail = (
       <i className="material-icons circle brand">chat_bubble</i>
     );
 
-    if (imageUrl) {
-      $$image = <img src={imageUrl} alt={username} className="circle" />;
+    if (thumbnail) {
+      $$thumbnail = <img src={thumbnail} alt={username} className="circle" />;
+    }
+
+    var $$image = '';
+
+    if (this.props.plip.image) {
+      var $$watermark = '';
+
+      if (this.props.plip.image.type === 'giphy') {
+        $$watermark = (
+          <div className="plip__image-watermark">
+            <img src="/giphy/horizontal-dark-text.png" />
+          </div>
+        );
+      }
+
+      $$image = (
+        <div>
+          <img src={this.props.plip.image.url} />
+          {$$watermark}
+        </div>
+      );  
     }
 
     return (
       <div className="plips__list-item collection-item avatar">
-        {$$image}
+        {$$thumbnail}
         <span className="title">{username}</span>
         <p>
           @{currentTime} – {this.props.plip.message}
         </p>
+        {$$image}
         {$$delete}
       </div>
     );
