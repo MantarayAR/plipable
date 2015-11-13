@@ -14,46 +14,32 @@ PlipTimelineComponent = React.createClass({
       }).fetch()
     }
   },
-  seek(e) {
-    e.preventDefault();
-
-    var parentOffset = $(e.currentTarget).parent().offset();
-    var x = e.pageX - parentOffset.left;
-    var width = $(e.currentTarget).width();
-
-    var percentage = x / width;
-
-    var time = percentage * this.props.currentDuration;
-
-    this.props.seek(time);
+  getInitialState() {
+    return {
+      plips: null
+    }
   },
-  render() {
-    var time     = this.props.currentTime;
-    var duration = this.props.currentDuration;
-
-    // Draw the current line
-    var percentageOffset = Math.floor(10000 * time / duration) / 100.0;
-    var currentLineStyles = { left: percentageOffset + '%' };
-    var $$currentLine = (
-      <div className="plip__timeline-line" style={currentLineStyles}>
-      </div>
-    );
-
+  componentDidMount() {
+    this.calculateTimeline(this.props.plips, this.props.currentDuration);
+    this.setState({lastPlips: this.props.plips});
+  },
+  componentWillReceiveProps(nextProps) {
+    if (! _.isEqual(nextProps.plips, this.state.lastPlips)) {
+      this.calculateTimeline(nextProps.plips, this.props.currentDuration);
+      this.setState({lastPlips: nextProps.plips});
+    }
+  },
+  calculateTimeline(plips, duration) {
     // Draw plips in groups
     var $$children = [];
     var buckets = [];
     //var bucketSize = duration * 15.0 / $(window).width(); // in seconds
     var bucketSize = Math.log( duration );
 
-    // Sort the plips
-    this.data.plips.sort(function(a,b) {
-      return a.videoTimestamp > b.videoTimestamp;
-    });
-
     var currentBucket = 0;
 
-    if (this.data.plips.length > 0) {
-      var sortedPlips = _.sortBy(this.data.plips, "videoTimestamp");
+    if (plips.length > 0) {
+      var sortedPlips = _.sortBy(plips, "videoTimestamp");
 
       buckets[currentBucket] = [sortedPlips[0]];
       for (var i = 1; i < sortedPlips.length; i++) {
@@ -114,11 +100,40 @@ PlipTimelineComponent = React.createClass({
       }
     }
 
+    this.setState({plips: $$children});
+  },
+  seek(e) {
+    e.preventDefault();
+
+    var parentOffset = $(e.currentTarget).parent().offset();
+    var x = e.pageX - parentOffset.left;
+    var width = $(e.currentTarget).width();
+
+    var percentage = x / width;
+
+    var time = percentage * this.props.currentDuration;
+
+    this.props.seek(time);
+  },
+  render() {
+    var time     = this.props.currentTime;
+    var duration = this.props.currentDuration;
+
+    // Draw the current line
+    var percentageOffset = Math.floor(10000 * time / duration) / 100.0;
+    var currentLineStyles = { left: percentageOffset + '%' };
+    var $$currentLine = (
+      <div className="plip__timeline-line" style={currentLineStyles}>
+      </div>
+    );
+
+    
+
     return (
       <div className="plip__timeline" onClick={this.seek}>
         {$$currentLine}
 
-        {$$children}
+        {this.state.plips}
       </div>
     );
   }
