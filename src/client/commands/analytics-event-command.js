@@ -1,7 +1,7 @@
 AnalyticsEventCommand = function() {
   var handle = function(eventName, name, value) {
     analytics.track(eventName, {
-      eventName: name,
+      name: name,
       value: value,
     });
   };
