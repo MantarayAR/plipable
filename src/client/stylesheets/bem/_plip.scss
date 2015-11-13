@@ -130,11 +130,25 @@ $plip-timeline-height: 50px;
   }
 }
 
+.plip__container {
+  min-height: 20vh;
+}
+
 .plip__image-watermark {
   margin-left: 25px;
   max-width: 150px;
 
   img {
     width: 100%;
+  }
+}
+
+.plips__desktop {
+  min-height: 40vw;
+  max-height: 40vw;
+  overflow: auto;
+
+  .plips__list {
+    margin-top: 0;
   }
 }

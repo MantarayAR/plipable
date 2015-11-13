@@ -10,4 +10,12 @@
 .view__player {
   background-color: black;
   margin-bottom: 0;
+
+  .l8 {
+    background-color: black;
+  }
+
+  .l4 {
+    background-color: $brand-color;
+  }
 }
