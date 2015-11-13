@@ -61,6 +61,9 @@ ViewPage = React.createClass({
             </div>
             <div className="col l4 hide-on-med-and-down">
               <div className="plips__desktop">
+                <NewPlipComponent
+                  videoId={this.props.videoId}
+                  currentTime={this.state.currentTime} />
                 <PlipsListComponent
                   videoId={this.props.videoId}
                   currentTime={this.state.currentTime} />
@@ -75,10 +78,10 @@ ViewPage = React.createClass({
 
           <div className="row plips__container">
             <div className="col m8 offset-m2 s10 offset-s1">
-              <NewPlipComponent
+              <div className="hide-on-large-only">
+                <NewPlipComponent
                   videoId={this.props.videoId}
                   currentTime={this.state.currentTime} />
-              <div className="hide-on-large-only">
                 <PlipsListComponent
                     videoId={this.props.videoId}
                     currentTime={this.state.currentTime} />

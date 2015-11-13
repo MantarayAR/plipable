@@ -130,8 +130,8 @@ $plip-timeline-height: 50px;
   }
 }
 
-.plip__container {
-  min-height: 20vh;
+.plips__container {
+  min-height: 4vh;
 }
 
 .plip__image-watermark {
@@ -144,11 +144,17 @@ $plip-timeline-height: 50px;
 }
 
 .plips__desktop {
+  border-bottom: 1px solid lighten($brand-color, 20%);
   min-height: 40vw;
   max-height: 40vw;
   overflow: auto;
 
   .plips__list {
-    margin-top: 0;
+    margin: 2vw;
+  }
+
+  .plip__floating-button a {
+    margin-right: 1vh;
+    margin-top: 1vh;
   }
 }
