@@ -1,6 +1,8 @@
 Plip it
 =======
 
+[![Stories in Ready](https://badge.waffle.io/MantarayAR/plip-it.png?label=ready&title=Ready)](http://waffle.io/MantarayAR/plip-it)
+
 Chat on videos. Your messages are automatically timestamped to where you initially wanted to post them!
 
 [Visit the Live Website!](http://plipit.meteor.com)
