@@ -122,6 +122,14 @@ $plip-timeline-height: 50px;
   z-index: 1000;
 }
 
+.plip__image {
+  max-width: 100%;
+
+  image {
+    max-width: 100%;
+  }
+}
+
 .plip__image-watermark {
   margin-left: 25px;
   max-width: 150px;

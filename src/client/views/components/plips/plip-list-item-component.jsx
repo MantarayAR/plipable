@@ -67,7 +67,7 @@ PlipListItemComponent = React.createClass({
       }
 
       $$image = (
-        <div>
+        <div className="plip__image">
           <img src={this.props.plip.image.url} />
           {$$watermark}
         </div>
