@@ -1,9 +1,4 @@
 NewPlipFormComponent = React.createClass({
-  getInitialState() {
-    return {
-      alreadySending: false
-    }
-  },
   componentDidMount() {
     // Really gross. Not sure why this is necessary
     setTimeout(function() {
@@ -17,38 +12,29 @@ NewPlipFormComponent = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
 
-    var that           = this;
     var videoId        = this.props.videoId;
     var comment        = this.refs.comment.value;
     var videoTimestamp = this.props.currentTime;
-    var alreadySending = this.state.alreadySending;
 
-    if (!alreadySending) {
-      // Validation
+    // Validation
 
-      if (comment === "") {
-        Materialize.toast('Plips can\'t be empty!', 3000, 'red lighten-1');
-        return;
-      }
-
-      this.setState({ alreadySending: true });
-
-      dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
-      Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
-        that.setState({ alreadySending: false });
-
-        if (err) {
-          if (err.reason) {
-            Materialize.toast(err.reason, 3000, 'red lighten-1')
-          } else {
-            Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
-          }
-        } else {
-          that.closeModal();
-          Materialize.toast('Post Successful', 4000)
-        }
-      });
+    if (comment === "") {
+      Materialize.toast('Plips can\'t be empty!', 3000, 'red lighten-1');
+      return;
     }
+    dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
+    this.closeModal();
+    Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
+      if (err) {
+        if (err.reason) {
+          Materialize.toast(err.reason, 3000, 'red lighten-1')
+        } else {
+          Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
+        }
+      } else {
+        Materialize.toast('Post Successful', 4000)
+      }
+    });
   },
   closeModal() {
     this.props.closeModal();
