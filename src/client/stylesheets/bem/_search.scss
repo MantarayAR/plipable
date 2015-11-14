@@ -44,5 +44,14 @@
 .search__results-list {
   .collection-item {
     color: $brand-color;
+
+    .title {
+      color: $brand-color !important;
+      font-size: 1.2rem;
+    }
+
+    p {
+      color: #555;
+    }
   }
 }
