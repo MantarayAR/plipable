@@ -39,6 +39,7 @@ VideoPlayerComponent = React.createClass({
     var newVideoId = event.target.getVideoData().video_id
 
     if (newVideoId !== this.props.videoId) {
+      dispatch(new AnalyticsEventCommand(), 'Video', 'Next Video', newVideoId);
       FlowRouter.setParams({ videoId: newVideoId });
     }
   },
