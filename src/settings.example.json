@@ -5,6 +5,10 @@
   "kadira_app_secret": "",
   "google_key": "",
   "giphy_key": "",
+  "mail_url": "smtp://USERNAME:PASSWORD@HOST:PORT/",
+  "contactForm" : {
+    "emailTo": "email@asdf.com"
+  },
   "public": {
     "site_url": "",
     "analyticsSettings": {

@@ -68,6 +68,8 @@ NavigationComponent = React.createClass({
 
     var $$navItems = [(
       <li key="search"><a href="#!" onClick={this.handleSearch}>Search</a></li>
+    ), (
+      <li key="about"><a href="/about">About</a></li>
     )];
 
     if (this.data.isLoggedIn) {
