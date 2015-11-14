@@ -7,7 +7,10 @@ NewPlipFormComponent = React.createClass({
   componentDidMount() {
     // Really gross. Not sure why this is necessary
     setTimeout(function() {
-      $('#plip-comment').focus();  
+      $('#plip-comment')
+        .focus()
+        .attr('length', 250)
+        .characterCounter();
     }, 1);
     
   },
