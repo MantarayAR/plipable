@@ -7,12 +7,12 @@
  |
  */
 
-var userProfileNames = ['Mantaray AR', 'idmontie'];
+var userTwitterIds = ['2202135266'];
 
 Migrations.add('add-administrators', function() {
   var users = Meteor.users.find({
-    'profile.name': {
-      $in: userProfileNames
+    'services.twitter.id': {
+      $in: userTwitterIds
     }
   }).fetch();
 
@@ -21,8 +21,8 @@ Migrations.add('add-administrators', function() {
   });
 }, function() {
 var users = Meteor.users.find({
-    'profile.name': {
-      $in: userProfileNames
+    'services.twitter.id': {
+      $in: userTwitterIds
     }
   }).fetch();
 
