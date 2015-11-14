@@ -17,5 +17,8 @@ if ( Meteor.isServer ) {
         'services.twitter.screenName': 1
       }
     });
-  });  
+  });
+  Meteor.publish(null, function () { 
+    return Meteor.roles.find({});
+  });
 }
