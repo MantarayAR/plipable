@@ -1,7 +1,6 @@
 AnalyticsEventCommand = function() {
-  var handle = function(eventName, name, value) {
-    var campaign = 'Meteor Web';
-    ga('send', 'event', eventName, name, campaign, value);
+  var handle = function(eventName, name, campaign) {
+    ga('send', 'event', eventName, name, campaign);
   };
 
   return {

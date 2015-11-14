@@ -29,8 +29,6 @@ NewPlipFormComponent = React.createClass({
       return;
     }
     dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
-    this.closeModal();
-    window.history.popState();
     Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
       if (err) {
         if (err.reason) {
@@ -42,6 +40,8 @@ NewPlipFormComponent = React.createClass({
         Materialize.toast('Post Successful', 4000)
       }
     });
+    this.closeModal();
+    window.history.popState();
   },
   closeModal() {
     this.props.closeModal();
