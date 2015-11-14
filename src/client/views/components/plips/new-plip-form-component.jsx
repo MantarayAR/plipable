@@ -1,5 +1,6 @@
 NewPlipFormComponent = React.createClass({
   componentDidMount() {
+    var that = this;
     // Really gross. Not sure why this is necessary
     setTimeout(function() {
       $('#plip-comment')
@@ -7,7 +8,12 @@ NewPlipFormComponent = React.createClass({
         .attr('length', 250)
         .characterCounter();
     }, 1);
-    
+
+    window.history.pushState({modal: 'open'}, 'newplip');
+
+    $(window).on('popstate', function() {
+      that.closeModal();
+    });
   },
   handleSubmit(e) {
     e.preventDefault();
@@ -24,6 +30,7 @@ NewPlipFormComponent = React.createClass({
     }
     dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
     this.closeModal();
+    window.history.popState();
     Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
       if (err) {
         if (err.reason) {
