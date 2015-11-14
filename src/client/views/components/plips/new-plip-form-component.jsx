@@ -26,7 +26,7 @@ NewPlipFormComponent = React.createClass({
 
       this.setState({ alreadySending: true });
 
-      dispatch(new AnalyticsEventCommand(), 'plip', 'New Plip', videoId);
+      dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
       Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
         that.setState({ alreadySending: false });
 

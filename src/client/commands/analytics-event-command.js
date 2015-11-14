@@ -1,9 +1,7 @@
 AnalyticsEventCommand = function() {
   var handle = function(eventName, name, value) {
-    analytics.track(eventName, {
-      name: name,
-      value: value,
-    });
+    var campaign = 'Meteor Web';
+    ga('send', 'event', eventName, name, campaign, value);
   };
 
   return {
