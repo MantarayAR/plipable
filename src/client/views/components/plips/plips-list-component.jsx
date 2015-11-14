@@ -19,7 +19,8 @@ PlipsListComponent = React.createClass({
           videoTimestamp: -1,
           createdAt: -1
         }
-      }).fetch()
+      }).fetch(),
+      isLoggedIn: !! Meteor.userId()
     }
   },
   render() {
@@ -27,21 +28,32 @@ PlipsListComponent = React.createClass({
       return <AppLoadingComponent noText={true} />
     }
 
+    var $$signin = '';
+
+    if (! this.data.isLoggedIn) {
+      $$signin = (
+        <LoginComponent />
+      );
+    }
+
     return (
-      <TransitionGroup
-            className="plips__list collection plip-items"
-            transitionName='slide-down'
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
-            name="plip-items">
-        {this.data.plips.map(function(plip, i){
-          return (
-            <div key={plip._id}>
-              <PlipListItemComponent plip={plip} />
-            </div>
-          );
-        })}
-      </TransitionGroup>
+      <div>
+        {$$signin}
+        <TransitionGroup
+              className="plips__list collection plip-items"
+              transitionName='slide-down'
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={1000}
+              name="plip-items">
+          {this.data.plips.map(function(plip, i){
+            return (
+              <div key={plip._id}>
+                <PlipListItemComponent plip={plip} />
+              </div>
+            );
+          })}
+        </TransitionGroup>
+      </div>
     );
   }
 });
