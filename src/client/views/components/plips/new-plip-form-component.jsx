@@ -5,7 +5,11 @@ NewPlipFormComponent = React.createClass({
     }
   },
   componentDidMount() {
-    $('#plip-comment').focus();
+    // Really gross. Not sure why this is necessary
+    setTimeout(function() {
+      $('#plip-comment').focus();  
+    }, 1);
+    
   },
   handleSubmit(e) {
     e.preventDefault();
@@ -55,7 +59,7 @@ NewPlipFormComponent = React.createClass({
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
-              <textarea autoFocus maxLength="250" ref="comment" id="plip-comment" className="materialize-textarea"></textarea>
+              <input autoFocus={true} maxLength="250" ref="comment" id="plip-comment" type="text"/>
               <label htmlFor="plip-comment">Your comment @ {currentTime}</label>
             </div>
 
