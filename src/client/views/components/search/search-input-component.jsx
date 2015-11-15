@@ -10,6 +10,19 @@ SearchInputComponent = React.createClass({getInitialState() {
     var searchText     = this.refs.search.value;
     
     searchCallback(searchText);
+
+    var $input = $(ReactDOM.findDOMNode(this.refs.search));
+
+    if ( window.isMobile() ) {
+      $input.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
+      $input.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
+      setTimeout(function() {
+        $input.blur();  //actually close the keyboard
+        // Remove readonly attribute after keyboard is hidden.
+        $input.removeAttr('readonly');
+        $input.removeAttr('disabled');
+      }, 100);
+    }
   },
   handleChange(e) {
     e.preventDefault();
