@@ -22,7 +22,6 @@ NewPlipComponent = React.createClass({
 
     if (this.state.modalIsOpen) {
       if (goBack) {
-        console.log('I was called to go back :(');
         window.history.back();
       }
 
