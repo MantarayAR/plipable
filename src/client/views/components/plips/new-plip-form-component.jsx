@@ -1,6 +1,7 @@
 NewPlipFormComponent = React.createClass({
   componentDidMount() {
     var that = this;
+    var timestamp = +new Date();
     // Really gross. Not sure why this is necessary
     setTimeout(function() {
       $('#plip-comment')
@@ -9,11 +10,7 @@ NewPlipFormComponent = React.createClass({
         .characterCounter();
     }, 1);
 
-    window.history.pushState({modal: 'open'}, 'newplip');
-
-    $(window).on('popstate', function() {
-      that.closeModal();
-    });
+    window.location.hash = 'open';
   },
   handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +38,6 @@ NewPlipFormComponent = React.createClass({
       }
     });
     this.closeModal();
-    window.history.popState();
   },
   closeModal() {
     this.props.closeModal();
