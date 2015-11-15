@@ -1,15 +1,28 @@
+Session.setDefault('adminLoggedIn', false);
+
 AdminLayout = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
-    if (Meteor.userId() == null ||
-       !Roles.userIsInRole(Meteor.userId(), ['admin'], Roles.GLOBAL_GROUP)) {
-      FlowRouter.go('/');
-    }
+    var loggedIn = Session.get('adminLoggedIn');
+
+    Meteor.autorun(function() {
+      if (Meteor.userId() == null ||
+          !Roles.userIsInRole(Meteor.userId(), ['admin'], Roles.GLOBAL_GROUP)) {
+        Session.set('adminLoggedIn', false);
+      } else {
+        Session.set('adminLoggedIn', true);
+      }
+    });
 
     return {
+      loggedIn: loggedIn
     }
   },
   render() {
+    if (! this.data.loggedIn) {
+      return <AppLoadingComponent />
+    }
+
     return (
       <div>
         <header>

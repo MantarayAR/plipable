@@ -11,6 +11,13 @@ NewPlipFormComponent = React.createClass({
     }, 1);
 
     window.location.hash = 'open';
+    window.modalWasOpen = true;
+
+    $(window).on('hashchange', function() {
+      if (that && that.closeModal && window.location.hash == '' && window.modalWasOpen) {
+        that.closeModal(false);
+      }
+    });
   },
   handleSubmit(e) {
     e.preventDefault();
@@ -39,8 +46,8 @@ NewPlipFormComponent = React.createClass({
     });
     this.closeModal();
   },
-  closeModal() {
-    this.props.closeModal();
+  closeModal(goBack) {
+    this.props.closeModal(goBack);
   },
   render() {
     var currentTime = this.props.currentTime;

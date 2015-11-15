@@ -5,23 +5,11 @@ NewPlipComponent = React.createClass({
       isLoggedIn: !! Meteor.userId()
     }
   },
-  componentDidMount() {
-    var that = this;
-    $(window).on('popstate', function(e) {
-      if (that && that.handleHashChange) {
-        that.handleHashChange(e);
-      }
-    });
-  },
   getInitialState: function() {
     return {
       modalIsOpen: false,
       currentTime: false
     };
-  },
-  handleHashChange(e) {
-    console.log(e);
-
   },
   openModal: function() {
     this.setState({
@@ -29,9 +17,18 @@ NewPlipComponent = React.createClass({
       currentTime: this.props.currentTime
     });
   },
-  closeModal: function() {
-    window.history.back();
-    this.setState({modalIsOpen: false});
+  closeModal: function(goBack) {
+    goBack = (goBack == null) ? true : goBack;
+
+    if (this.state.modalIsOpen) {
+      if (goBack) {
+        console.log('I was called to go back :(');
+        window.history.back();
+      }
+
+      window.modalWasOpen = false;
+      this.setState({modalIsOpen: false});
+    }
   },
   handleNewComment(e) {
     e.preventDefault();
