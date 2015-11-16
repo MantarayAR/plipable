@@ -23,9 +23,7 @@ NavigationComponent = React.createClass({
   handleLogin(e) {
     e.preventDefault();
 
-    Meteor.loginWithTwitter({}, function () {
-      FlowRouter.reload();
-    });
+    dispatch(new LogUserInCommand());
   },
   handleLogout(e) {
     e.preventDefault();

@@ -1,6 +1,6 @@
 SearchController = function() {
   this.view = function(params, queryParams) {
-    if (!!Meteor.userId()) {
+    if (Meteor.loggingIn() || !!Meteor.userId()) {
       ReactLayout.render(MainLayout, {
         content: (
           <SearchPage
