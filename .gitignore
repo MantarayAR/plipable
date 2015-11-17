@@ -4,3 +4,5 @@
 # Settings
 src/settings.json
 src/settings.prod.json
+src/settings.local.json
+src/mup.json

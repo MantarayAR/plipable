@@ -8,6 +8,7 @@
 
 .splash-page {
   color: #f0f0f0;
+  margin-top: 5vh;
   text-align: center;
 
   .at-form {
@@ -22,8 +23,12 @@
   }
 }
 
+.splash-page__preview-image {
+  max-height: 90vh;
+}
+
 .splash-page__logo {
-  margin-top: 10vh;
+  margin-top: 5vh;
   max-width: 150px;
   width: 25vw;
 }
