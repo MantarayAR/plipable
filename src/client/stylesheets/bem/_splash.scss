@@ -23,8 +23,13 @@
   }
 }
 
+.splash-page__preview-image-link {
+  border-bottom: 0 !important;
+}
+
 .splash-page__preview-image {
-  max-height: 90vh;
+  max-height: 60vw;
+  max-width: 100%;
 }
 
 .splash-page__logo {

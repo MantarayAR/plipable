@@ -1,14 +1,19 @@
 Meteor.startup(function () {
-  WebFontConfig = {
-    google: { families: [ 'Dosis:400,800:latin', 'Courgette::latin' ] }
-  };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
+  if (Meteor.isCordova) {
+    // Use a clunky stylesheet
+    $('head').append('<link rel="stylesheet" type="text/css" href="/fonts/stylesheet.css" />');
+  } else {
+    WebFontConfig = {
+      google: { families: [ 'Dosis:400,800:latin', 'Courgette::latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  }
 });
