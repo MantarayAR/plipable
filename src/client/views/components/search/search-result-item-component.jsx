@@ -8,6 +8,7 @@ SearchResultItemComponent = React.createClass({
       id = this.props.result.id;
     }
 
+    // TODO use the videoType to determine the url
     FlowRouter.go('/v/' + id);
   },
   render() {

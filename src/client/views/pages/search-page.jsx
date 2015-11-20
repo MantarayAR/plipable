@@ -3,24 +3,36 @@ SearchPage = React.createClass({
     return {
       appLoading: true,
       results: [],
-      error: false
+      error: false,
+      showActivityFeed: true
     }
   },
   callSearch(text) {
     var that = this;
     text = text || '';
 
-    Meteor.call('search', text, function(err, result) {
-      if (that.isMounted()) {
-        if (err) {
-          that.setState({ error: err.reason });
-        } else {
-          that.setState({ results: result });
-        }
+    if (text === '') {
+      this.setState({
+        showActivityFeed: true,
+        appLoading: false
+      });
+    } else {
+      this.setState({
+        showActivityFeed: false,
+        appLoading: true
+      });
+      Meteor.call('search', text, function(err, result) {
+        if (that.isMounted()) {
+          if (err) {
+            that.setState({ error: err.reason });
+          } else {
+            that.setState({ results: result });
+          }
 
-        that.setState({ appLoading: false });
-      }
-    });
+          that.setState({ appLoading: false });
+        }
+      });
+    }
   },
   componentWillReceiveProps(nextProps) {
     this.callSearch(nextProps.searchText);
@@ -42,13 +54,24 @@ SearchPage = React.createClass({
         $$error = <ErrorComponent message={this.state.error} />
       }
 
-      $$contents = (
-        <div>
-          {$$error}
+      if (this.state.showActivityFeed) {
+        $$contents = (
+          <div>
+            {$$error}
 
-          <SearchResultsListComponent results={this.state.results} />
-        </div>
-      );
+            <h2 className="header">Latest Plips</h2>
+            <ActivityFeedComponent />
+          </div>
+        );
+      } else {
+        $$contents = (
+          <div>
+            {$$error}
+
+            <SearchResultsListComponent results={this.state.results} />
+          </div>
+        );
+      }
     }
 
     return (

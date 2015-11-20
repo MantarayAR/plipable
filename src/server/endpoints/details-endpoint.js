@@ -20,12 +20,20 @@ Meteor.methods({
       });
     });
 
-    // TODO make sure we have the video in the mongo database
-
     if (response.result) {
       if (response.result.items) {
         if (response.result.items[0]) {
-          return response.result.items[0];
+          var video   = response.result.items[0];
+          var videoId = video.id;
+          var videoType = 'youtube';
+          var title = video.snippet.title;
+          var description = video.snippet.description;
+          var thumbnail = video.snippet.thumbnails['default'].url;
+          var tags = video.snippet.tags;
+
+          dispatch(new UpsertVideoCommand(), videoId, videoType, title, thumbnail, description, tags);
+
+          return video;
         }
       }
     }

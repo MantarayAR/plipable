@@ -6,3 +6,24 @@ body {
 .img-responsive {
   max-width: 100%;
 }
+
+::-webkit-input-placeholder {
+ color: $brand-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+ color: $brand-color;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+ color: $brand-color;  
+}
+
+:-ms-input-placeholder {  
+ color: $brand-color;  
+}
+
+.header {
+  color: #f0f0f0;
+  font-size: 2.2rem;
+}

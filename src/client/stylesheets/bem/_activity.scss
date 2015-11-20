@@ -1,0 +1,42 @@
+.activity-feed__collection {
+  display: block;
+
+  .collection-item {
+    color: $brand-color;
+
+    .title {
+      color: $brand-color !important;
+      font-size: 1.2rem;
+    }
+
+    p {
+      color: #555;
+    }
+  }
+}
+
+.activity-feed__item {
+  cursor: pointer;
+}
+
+
+.activity-feed__item-video {
+  min-height: 125px;
+  padding-left: 125px;
+  position: relative;
+
+  img {
+    height: 100px;
+    left: 15px;
+    position: absolute;
+    width: 100px;
+  }
+}
+
+.activity-feed__item-plips {
+  .collection-item {
+    :not(.avatar) img {
+      display: none !important;
+    }
+  }
+}

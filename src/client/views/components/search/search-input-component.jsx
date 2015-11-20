@@ -1,4 +1,5 @@
-SearchInputComponent = React.createClass({getInitialState() {
+SearchInputComponent = React.createClass({
+  getInitialState() {
     return {
       throttle: null
     }
