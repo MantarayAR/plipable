@@ -1,0 +1,23 @@
+/*
+ |---------------------------------------------
+ | Forms
+ |---------------------------------------------
+ |
+ | Setup brand style forms
+ |
+ */
+::-webkit-input-placeholder {
+ color: $brand-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+ color: $brand-color;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+ color: $brand-color;  
+}
+
+:-ms-input-placeholder {  
+ color: $brand-color;  
+}

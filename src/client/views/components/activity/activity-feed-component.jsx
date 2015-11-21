@@ -26,7 +26,6 @@ ActivityFeedComponent = React.createClass({
       if (err) {
         // TODO handle error
       } else {
-        console.log( response );
         this.setState({
           activity: response
         });

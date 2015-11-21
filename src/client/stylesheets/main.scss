@@ -6,11 +6,13 @@
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";
 
 @import "scaffolding";
+@import "forms";
 @import "modal";
 @import "navbar";
 @import "accounts";
 @import "loading";
 @import "toast";
+@import "tabs";
 @import "transitions";
 
 @import "bem/splash";
