@@ -12,11 +12,9 @@ HomePage = React.createClass({
     };
   },
   render() {
-    var content = <SplashPage />
-
     return (
       <div>
-        {content}
+        <SplashPage />
       </div>
     );
   }

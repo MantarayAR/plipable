@@ -2,25 +2,8 @@ body {
   background-color: $brand-color;
 }
 
-
 .img-responsive {
   max-width: 100%;
-}
-
-::-webkit-input-placeholder {
- color: $brand-color;
-}
-
-:-moz-placeholder { /* Firefox 18- */
- color: $brand-color;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
- color: $brand-color;  
-}
-
-:-ms-input-placeholder {  
- color: $brand-color;  
 }
 
 .header {
