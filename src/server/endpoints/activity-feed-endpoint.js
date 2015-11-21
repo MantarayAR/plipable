@@ -1,41 +1,57 @@
+var minorCache = {
+  data: [],
+  timestamp: 0
+};
+
 Meteor.methods({
   getActivityFeed: function() {
-    // Get the latest plips
-    var plips = Plips.find({
-    }, {
-      limit: 20,
-      sort: {
-        createdAt: -1
-      }
-    }).fetch();
+    var now = +new Date();
 
-    // Merge the plips by video id
-    var groupedPlips = _.groupBy(plips, function(plip) { return plip.videoId; });
+    if (minorCache && minorCache.data && minorCache.timestamp > now - 1000 * 15) {
+      return minorCache.data;
+    } else {
+      // Get the latest plips
+      var plips = Plips.find({
+      }, {
+        limit: 20,
+        sort: {
+          createdAt: -1
+        }
+      }).fetch();
 
-    // Get videos
-    var videoIds = _.keys(groupedPlips);
+      // Merge the plips by video id
+      var groupedPlips = _.groupBy(plips, function(plip) { return plip.videoId; });
 
-    var videos = Videos.find({
-      videoId: {
-        $in: videoIds
-      }
-    }).fetch();
+      // Get videos
+      var videoIds = _.keys(groupedPlips);
 
-    // Map plips to videos
-    var results = _.map(videos, function(video) {
-      video.plips = groupedPlips[video.videoId];
-      video.latestPlip = _.max(video.plips, function(plip) {
-        return +plip.createdAt;
+      var videos = Videos.find({
+        videoId: {
+          $in: videoIds
+        }
+      }).fetch();
+
+      // Map plips to videos
+      var results = _.map(videos, function(video) {
+        video.plips = groupedPlips[video.videoId];
+        video.latestPlip = _.max(video.plips, function(plip) {
+          return +plip.createdAt;
+        });
+
+        return video;
       });
 
-      return video;
-    });
+      // Sort by latest plip date
+      results = _.sortBy(results, function(result) {
+        return -(+result.latestPlip.createdAt)
+      } );
 
-    // Sort by latest plip date
-    results = _.sortBy(results, function(result) {
-      return -(+result.latestPlip.createdAt)
-    } );
+      minorCache = {
+        data: results,
+        timestamp: now
+      }
 
-    return results;
+      return results;
+    }
   }
 });
