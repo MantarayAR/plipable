@@ -1,14 +1,14 @@
-Plip it
+Plipable
 =======
 
-[![Stellarnauts Experience](http://stellarnauts.meteor.com/api/MantarayAR/plip-it/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/MantarayAR/plip-it)
- [![Stories in Ready](https://badge.waffle.io/MantarayAR/plip-it.png?label=ready&title=Ready)](http://waffle.io/MantarayAR/plip-it)
+[![Stellarnauts Experience](http://stellarnauts.meteor.com/api/MantarayAR/plipable/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/MantarayAR/plipable)
+ [![Stories in Ready](https://badge.waffle.io/MantarayAR/plipable.png?label=ready&title=Ready)](http://waffle.io/MantarayAR/plipable)
 
-Chat on videos. Your messages are automatically timestamped to where you initially wanted to post them!
+It's like Soundcloud for Youtube. Your messages are automatically timestamped to where you initially wanted to post them!
 
-[Visit the Live Website!](http://plipit.meteor.com)
+[Visit the Live Website!](http://plipable.com)
 
-[![Plit it](documentation/images/demo.png)](http://plipit.meteor.com)
+[![Plipable](documentation/images/demo.gif)](http://plipable.com)
 
 
 ## Running the app
