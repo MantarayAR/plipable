@@ -1,3 +1,9 @@
+/**
+ * Reusable error component that uses
+ * a card to display an array of errors
+ *
+ * @param message Array
+ */
 ErrorComponent = React.createClass({
   componentWillReceiveProps(nextProps) {
     if (nextProps.message) {

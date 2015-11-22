@@ -1,3 +1,10 @@
+/**
+ * New Plip Form Component
+ *
+ * @param videoId String
+ * @param currentTime String
+ * @param closeModal Function(boolean)
+ */
 NewPlipFormComponent = React.createClass({
   componentDidMount() {
     var that = this;

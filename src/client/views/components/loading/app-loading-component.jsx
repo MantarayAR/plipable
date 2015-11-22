@@ -1,3 +1,6 @@
+/**
+ * Reusable app loading component
+ */
 AppLoadingComponent = React.createClass({
   render() {
     return <div className="loading">

@@ -1,3 +1,8 @@
+/**
+ * Show the tabs and panels for the "Search" page
+ *
+ * @param searchText String
+ */
 SearchTabsComponent = React.createClass({
   componentDidMount() {
     this.setupTabs();

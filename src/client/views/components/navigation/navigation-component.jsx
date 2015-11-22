@@ -1,3 +1,9 @@
+/**
+ * Navigation component
+ *
+ * @param title String
+ * @param hideNavigation boolean
+ */
 NavigationComponent = React.createClass({
   mixins: [ReactMeteorData],
   getInitialState() {

@@ -1,3 +1,10 @@
+/**
+ * Show a list of plips – will load
+ * the plips from the plips subscription
+ *
+ * @param videoId String
+ * @param currentTime Number
+ */
 PlipsListComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {

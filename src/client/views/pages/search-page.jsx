@@ -7,7 +7,7 @@ SearchPage = React.createClass({
       <div className="search">
         <div className="row">
           <div className="col s12 m10 offset-m1">
-            <SearchInputComponent
+            <SearchFormComponent
                 searchText={this.props.searchText}
                 onSearch={this.search} />
 

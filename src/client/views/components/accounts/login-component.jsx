@@ -1,3 +1,6 @@
+/**
+ * Buttons for logging in
+ */
 LoginComponent = React.createClass({
   logUserIn(e) {
     e.preventDefault();

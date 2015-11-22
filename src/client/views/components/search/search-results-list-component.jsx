@@ -1,3 +1,8 @@
+/**
+ * Show a list of search Results
+ *
+ * @param results [Object]
+ */
 SearchResultsListComponent = React.createClass({
   render() {
     return (

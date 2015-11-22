@@ -1,3 +1,9 @@
+/**
+ * Show a single search result item
+ * in a list
+ *
+ * @param result Object
+ */
 SearchResultItemComponent = React.createClass({
   handleClick(e) {
     e.preventDefault();

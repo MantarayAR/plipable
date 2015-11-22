@@ -1,3 +1,8 @@
+/**
+ * Container for the search results
+ *
+ * @param searchText String
+ */
 SearchResultsComponent = React.createClass({
   getInitialState() {
     return {

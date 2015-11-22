@@ -1,3 +1,10 @@
+/**
+ * Wrapper for the video player
+ *
+ * @param videoId String
+ * @param currentTimeCallback Function
+ */
+// TODO use the setInterval Mixin
 VideoPlayerComponent = React.createClass({
   getInitialState() {
     return {

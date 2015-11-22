@@ -1,3 +1,7 @@
+/**
+ * Copied into here because mixins were not being loaded
+ * in the proper order
+ */
 SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -10,6 +14,9 @@ SetIntervalMixin = {
   }
 };
 
+/**
+ * Pulls in the latest feed from the server
+ */
 ActivityFeedComponent = React.createClass({
   mixins: [SetIntervalMixin],
   getInitialState: function() {

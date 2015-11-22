@@ -1,4 +1,10 @@
-SearchInputComponent = React.createClass({
+/**
+ * Search Form Component
+ *
+ * @param onSearch Function(String)
+ * @param searchText String
+ */
+SearchFormComponent = React.createClass({
   getInitialState() {
     return {
       throttle: null
@@ -14,12 +20,13 @@ SearchInputComponent = React.createClass({
 
     var $input = $(ReactDOM.findDOMNode(this.refs.search));
 
+    // Attempt to close the keyboard using some
+    // trickery on Mobile devices
     if ( window.isMobile() ) {
-      $input.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
-      $input.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
+      $input.attr('readonly', 'readonly');
+      $input.attr('disabled', 'true');
       setTimeout(function() {
-        $input.blur();  //actually close the keyboard
-        // Remove readonly attribute after keyboard is hidden.
+        $input.blur();
         $input.removeAttr('readonly');
         $input.removeAttr('disabled');
       }, 100);

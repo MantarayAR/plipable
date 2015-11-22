@@ -1,3 +1,12 @@
+/**
+ * Display circles along a timeline
+ * of when plips were posted
+ *
+ * @param videoId String
+ * @param currentTime Number
+ * @param currentDuration Number
+ * @parak seek Function(Number)
+ */
 PlipTimelineComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {

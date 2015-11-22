@@ -1,3 +1,8 @@
+/**
+ * Show a single plip item in a list
+ *
+ * @param plip Plip
+ */
 PlipListItemComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {

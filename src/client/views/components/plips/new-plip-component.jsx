@@ -1,3 +1,11 @@
+/**
+ * The New Plip Component handles creating
+ * the markup for the modal that wraps
+ * the form
+ *
+ * @param currentTime String
+ * @param videoId String
+ */
 NewPlipComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
