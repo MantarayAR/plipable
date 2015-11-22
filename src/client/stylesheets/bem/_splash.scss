@@ -25,11 +25,29 @@
 
 .splash-page__preview-image-link {
   border-bottom: 0 !important;
+  display: block;
+  position: relative;
 }
 
 .splash-page__preview-image {
-  max-height: 60vw;
+}
+
+.spash-page__preview-image-wrapper,
+.splash-page__preview-phone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.spash-page__preview-image-wrapper {
+  z-index: 5;
+}
+
+.splash-page__preview-phone {
   max-width: 100%;
+  max-height: 65vh;
+  z-index: 10;
 }
 
 .splash-page__logo {
