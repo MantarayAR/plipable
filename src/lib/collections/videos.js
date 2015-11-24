@@ -19,7 +19,8 @@ VideosSchema = new SimpleSchema({
   },
   description: {
     type: String,
-    label: "The video description"
+    label: "The video description",
+    optional: true
   },
   tags: {
     type: [String],
