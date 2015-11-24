@@ -6,7 +6,7 @@
  */
 ErrorComponent = React.createClass({
   componentWillReceiveProps(nextProps) {
-    if (nextProps.message) {
+    if (nextProps.message !== this.props.message) {
       var component = this.refs.error;
       var scrollY   = $(component).offset().top - 20;
 
@@ -18,14 +18,28 @@ ErrorComponent = React.createClass({
     var $$error = '';
 
     if (errors) {
+      var $$errorInner = '';
+
+      if (typeof this.props.message === 'string') {
+        $$errorInner = (
+          <ul>
+            <li>{this.props.message}</li>
+          </ul>
+        );
+      } else {
+        $$errorInner = (
+          <ul>
+            {errors.map(function(error, i) {
+              return <li key={i}>{error}</li>;
+            })}
+          </ul>
+        );
+      }
+
       var $$error = (
         <div className="card-panel red lighten-1">
           <span className="white-text">
-            <ul>
-              {errors.map(function(error, i) {
-                return <li key={i}>{error}</li>;
-              })}
-            </ul>
+            {$$errorInner}
           </span>
         </div>
       );
