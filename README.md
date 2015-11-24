@@ -46,3 +46,11 @@ If you have the mup.json configured:
 ```sh
 mup deploy
 ```
+
+## Running the Chrome Extension
+
+```sh
+cd extension-src
+npm install
+gulp
+```

@@ -8,30 +8,17 @@
   "icons": {
     "48": "images/icon-48x48.png"
   },
-  "options_page":"pages/options.html",
   "default_locale": "en",
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*"],
       "js": [
-        "bower_components/ddp.js/src/ddp.js",
-        "bower_components/q/q.js",
-        "bower_components/asteroid/dist/asteroid.chrome.js",
-        "bower_components/asteroid/dist/plugins/twitter-login.js",
-        "bower_components/jquery/dist/jquery.min.js",
-        "bower_components/react/react-dom.min.js",
-        "bower_components/react/react.min.js",
-        "client/index.js"
+        "index.js"
       ],
-      "css": ["stylesheets/main.css"],
+      "css": ["app.css"],
       "run_at": "document_start"
     }
   ],
-  "browser_action": {
-    "default_icon": "images/icon-36x36.png",
-    "default_popup": "pages/popup.html",
-    "default_title": "Plipable Settings"
-  },
   "permissions": [
     "activeTab",
     "tabs",

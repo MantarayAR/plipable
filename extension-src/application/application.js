@@ -1,3 +1,15 @@
+// Require Asteroid dependencies
+window.Q = require('asteroid/node_modules/q/q');
+window.DDP = require('asteroid/node_modules/ddp.js/src/ddp');
+var Asteroid = require('asteroid/dist/asteroid.chrome');
+var _twitter = require('asteroid/dist/plugins/facebook-login');
+
+var $ = require('jquery');
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var PlipPage = require('pages/plip-page.jsx');
+
 /*
  |------------------------------
  | Application Boot
@@ -7,7 +19,7 @@
  |
  */
 var Application = function() {
-  var _hostName = 'http://plipable.com';
+  var _hostName = 'https://www.plipable.com';
   var _asteroid = null;
 
   /**
@@ -36,12 +48,10 @@ var Application = function() {
    */
   var _initializeCard = function() {
     // Namespace jQuery
-    return +function($) {
-      var $youtubePlips = $('<div>').addClass('yt-card yt-card-has-padding plipable-card');
-      $('#action-panel-details').after($youtubePlips);
+    var $youtubePlips = $('<div>').addClass('yt-card yt-card-has-padding plipable-card');
+    $('#action-panel-details').after($youtubePlips);
 
-      return $youtubePlips;
-    }(jQuery);
+    return $youtubePlips;
   }
 
   /**
@@ -49,41 +59,20 @@ var Application = function() {
    */
   var _initializeAsteroid = function() {
     if (_asteroid === null) {
-      _asteroid = new Asteroid(_hostName);
+      //_asteroid = new Asteroid(_hostName);
     }
 
     return _asteroid;
   }
 
   var _initializeReact = function(card, Asteroid) {
-    // TODO
-    // At this point, we need to split these files up and have a src->builder->dist folder structure
+    ReactDOM.render(
+      (new PlipPage(Asteroid)).react(),
+      card[0]
+    );
   }
 
   return _constructor();
-}
+};
 
-
-/*
- |------------------------------
- | Intialization
- |------------------------------
- |
- |
- |
- */
-function initialize() {
-  if (window.top === window) {
-    if (window.location.host === 'plipable.com') {
-      document.body.classList.add('installed');
-    } else {
-      new Application();
-    }
-  }
-}
-
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  initialize();
-} else {
-  document.addEventListener('DOMContentLoaded', initialize, false);
-}
+module.exports = Application;
