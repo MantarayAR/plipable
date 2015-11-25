@@ -8,7 +8,9 @@ var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var PlipPage = require('pages/plip-page.jsx');
+var PlipContainer = require('containers/plip-container.jsx');
+var TimelineContainer = require('containers/timeline-container.jsx');
+var settings = require('json!settings.json');
 
 /*
  |------------------------------
@@ -19,7 +21,7 @@ var PlipPage = require('pages/plip-page.jsx');
  |
  */
 var Application = function() {
-  var _hostName = 'https://www.plipable.com';
+  var _hostName = settings.hostName;
   var _asteroid = null;
 
   /**
@@ -38,20 +40,48 @@ var Application = function() {
   }
 
   var _boot = function() {
-    var card = _initializeCard();
-    var asteroid = _initializeAsteroid();
-    var react = _initializeReact(card, asteroid);
+    setTimeout(function() {
+      var plipCard = _initializePlipCard();
+      var timelineCard = _initializeTimelineCard();
+      var asteroid = _initializeAsteroid();
+      var react = _initializeReact(plipCard, timelineCard, asteroid);
+    }, 1000);
   }
 
   /**
    * Add the encapsulator for the card
    */
-  var _initializeCard = function() {
-    // Namespace jQuery
-    var $youtubePlips = $('<div>').addClass('yt-card yt-card-has-padding plipable-card');
-    $('#action-panel-details').after($youtubePlips);
+  var _initializePlipCard = function() {
+    var $youtubePlips = $('<div>')
+      .addClass('yt-card yt-card-has-padding plipable-card')
+      .attr('id', 'plipable-plips');
+
+    var $oldCard = $('#plipable-plips');
+
+    if ( $oldCard[0] ) {
+      $oldCard.replaceWith($youtubePlips);
+    } else {
+      // Use id ends with with the hope that it won't change
+      $('div[id$="sidebar-contents"]').parent().prepend($youtubePlips);
+    }
 
     return $youtubePlips;
+  }
+
+  var _initializeTimelineCard = function() {
+    var $youtubeTimeline = $('<div>')
+      .addClass('yt-card yt-card-has-padding plipable-card')
+      .attr('id', 'plipable-timeline');
+
+    var $oldCard = $('#plipable-timeline');
+
+    if ( $oldCard[0] ) {
+      $oldCard.replaceWith($youtubeTimeline);
+    } else {
+      $('#watch-header').parent().prepend($youtubeTimeline);
+    }
+
+    return $youtubeTimeline;
   }
 
   /**
@@ -59,17 +89,15 @@ var Application = function() {
    */
   var _initializeAsteroid = function() {
     if (_asteroid === null) {
-      //_asteroid = new Asteroid(_hostName);
+      _asteroid = new Asteroid(_hostName, true);
     }
 
     return _asteroid;
   }
 
-  var _initializeReact = function(card, Asteroid) {
-    ReactDOM.render(
-      (new PlipPage(Asteroid)).react(),
-      card[0]
-    );
+  var _initializeReact = function(plipCard, timelineCard, Asteroid) {
+    new TimelineContainer(Asteroid, timelineCard[0]);
+    new PlipContainer(Asteroid, plipCard[0]);
   }
 
   return _constructor();

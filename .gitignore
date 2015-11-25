@@ -10,3 +10,6 @@ src/mup.json
 # Chrome
 chrome-src/index.js
 chrome-src/app.css
+
+# Extension
+extension-src/settings.json

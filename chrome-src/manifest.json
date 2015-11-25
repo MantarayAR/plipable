@@ -13,11 +13,14 @@
     {
       "matches": ["*://www.youtube.com/*"],
       "js": [
-        "index.js"
+        "inject.js"
       ],
       "css": ["app.css"],
       "run_at": "document_start"
     }
+  ],
+  "web_accessible_resources": [
+    "index.js"
   ],
   "permissions": [
     "activeTab",
