@@ -1,15 +1,27 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var moment = require('moment');
+var settings = require('json!settings.json');
+
+var humanizeTime = function(seconds) {
+  var outputFormat = 'm:ss';
+
+  if (seconds > 60 * 60) {
+    outputFormat = 'h:mm:ss';
+  }
+
+
+  return moment.utc(seconds * 1000).format(outputFormat);
+}
+
 module.exports = React.createClass({
   render() {
     var currentTime = this.props.plip.videoTimestamp;
-    // TODO humanize time
-    // currentTime     = __.Time.humanize(currentTime);
+    currentTime     = humanizeTime(currentTime);
 
     var thumbnail = this.props.plip.thumbnail;
     var username = this.props.plip.username;
-
 
     var $$thumbnail = (
       <i className="material-icons circle brand">chat_bubble</i>
@@ -25,9 +37,10 @@ module.exports = React.createClass({
       var $$watermark = '';
 
       if (this.props.plip.image.type === 'giphy') {
+        var watermarkUrl = '//' + settings.hostName + "/giphy/horizontal-dark-text.png";
         $$watermark = (
           <div className="plip__image-watermark">
-            <img src="/giphy/horizontal-dark-text.png" />
+            <img src={watermarkUrl} />
           </div>
         );
       }

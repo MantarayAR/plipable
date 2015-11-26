@@ -78,21 +78,20 @@ var PlipCardComponent = React.createClass({
     return (
       <div className="plipable-plips">
         {$$signin}
-        <div className="plipable-plips-list">
-          <ReactCSSTransitionGroup
-                transitionName='slide-down'
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}
-                name="plip-items">
-            {this.state.plips.map(function(plip, i){
-              return (
-                <div key={plip._id}>
-                  <PlipListItemComponent plip={plip} />
-                </div>
-              );
-            })}
-          </ReactCSSTransitionGroup>
-        </div>
+        <ReactCSSTransitionGroup
+              className="plips__list collection plip-items"
+              transitionName='slide-down'
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={1000}
+              name="plip-items">
+          {this.state.plips.map(function(plip, i){
+            return (
+              <div key={plip._id}>
+                <PlipListItemComponent plip={plip} />
+              </div>
+            );
+          })}
+        </ReactCSSTransitionGroup>
       </div>
     );
   } 

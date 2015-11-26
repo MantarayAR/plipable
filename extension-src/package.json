@@ -20,7 +20,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "json-loader": "^0.5.4",
+    "materialize-css": "^0.97.3",
+    "moment": "^2.10.6",
     "react-addons-css-transition-group": "^0.14.3",
+    "underscore": "^1.8.3",
     "webpack": "^1.12.8",
     "webpack-stream": "^2.1.1"
   },

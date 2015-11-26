@@ -3,13 +3,7 @@
  | Main Stylesheet
  |--------------------------------
  */
-
-/*
- |--------------------------------
- | Cards
- |--------------------------------
- */
-.plipable-card {
-  background-color: #FF555B !important;
-  color: #f0f0f0 !important;
-}
+@import "node_modules/materialize-css/sass/materialize.scss";
+@import "../../src/client/stylesheets/variables";
+@import "../../src/client/stylesheets/colors";
+@import "../../src/client/stylesheets/imports";

@@ -70,7 +70,7 @@ var Application = function() {
 
   var _initializeTimelineCard = function() {
     var $youtubeTimeline = $('<div>')
-      .addClass('yt-card yt-card-has-padding plipable-card')
+      .addClass('yt-card plipable-card')
       .attr('id', 'plipable-timeline');
 
     var $oldCard = $('#plipable-timeline');
