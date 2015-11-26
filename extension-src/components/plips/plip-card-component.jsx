@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-var AppLoadingComponent = require('../loading/app-loading-component.jsx');
+var AppLoadingComponent = require('shared/components/app-loading-component.jsx');
 var PlipListItemComponent = require('./plip-list-item-component.jsx');
 var SetIntervalMixin = require('components/mixins/set-interval-mixin');
 

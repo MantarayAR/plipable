@@ -1,15 +1,15 @@
-#loading {
+.plipable-loading {
   margin: 40px 0;
 }
 
-.spinner {
+.plipable-loading__spinner {
   margin: 100px auto;
   width: 40px;
   height: 40px;
   position: relative;
 }
 
-.cube1, .cube2 {
+.plipable-loading__cube--1, .plipable-loading__cube--2 {
   background-color: white;
   width: 15px;
   height: 15px;
@@ -21,7 +21,7 @@
   animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-.cube2 {
+.plipable-loading__cube--2 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
@@ -49,45 +49,5 @@
   } 100% { 
     transform: rotate(-360deg);
     -webkit-transform: rotate(-360deg);
-  }
-}
-
-
-#loader-pitch{
-  width: 92%;
-  color: white;
-  text-align: center;
-  margin: 0 auto;
-}
-
-#loader-pitch h3{
-  transform: translate(0px,25px);
-  -webkit-transform: translate(0px,25px);
-  -ms-transform: translate(0px,25px);
-  opacity: 0;
-  animation: 0.5s 1.5s appear ease-out forwards;
-  -webkit-animation: 0.5s 1.5s appear ease-out forwards;
-}
-
-
-@keyframes appear{
-  0% {
-    opacity: 0;
-    margin-top: -15px;
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-  }
-}
-
-@-webkit-keyframes appear{
-  0% {
-    opacity: 0;
-    margin-top: -15px;
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
   }
 }

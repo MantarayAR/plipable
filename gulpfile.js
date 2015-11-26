@@ -7,6 +7,7 @@
  | to make a build
  |
  */
+var path = require('path');
 
 // Core
 var gulp = require( 'gulp' );
@@ -18,15 +19,21 @@ var webpack = require( 'webpack' );
 var stream = require( 'webpack-stream' );
 
 gulp.task( 'compile', function() {
-  return gulp.src( 'index.js' )
+  return gulp.src( 'extension-src/index.js' )
     .pipe( stream( {
-      entry: __dirname + '/index.js',
+      entry: path.join(__dirname, 'extension-src', 'index.js'),
       output: {
-        path: __dirname + '/../chrome-src/',
+        path: path.join(__dirname, 'chrome-src/', 'index.js'),
         filename: 'index.js'
       },
       resolve: {
-        root: __dirname
+        root: path.join(__dirname, 'extension-src'),
+        alias: {
+          shared: path.join(__dirname, 'src/client/shared/')
+        }
+      },
+      resolveLoader: {
+        root: path.join(__dirname, "node_modules")
       },
       module: {
         loaders: [
@@ -41,13 +48,13 @@ gulp.task( 'compile', function() {
         ]
       }
     } ) )
-    .pipe( gulp.dest( '../chrome-src/' ) );
+    .pipe( gulp.dest( 'chrome-src/' ) );
 } );
 
 gulp.task( 'sass', function() {
-  gulp.src('stylesheets/app.scss')
+  gulp.src('extension-src/stylesheets/app.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('../chrome-src'));
+    .pipe(gulp.dest('chrome-src'));
 } );
 
 gulp.task( 'default', [ 'compile', 'sass' ] );

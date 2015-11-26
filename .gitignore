@@ -1,6 +1,9 @@
 # System Files >.>
 .DS_Store
 
+# Node
+/node_modules/
+
 # Settings
 src/settings.json
 src/settings.prod.json
