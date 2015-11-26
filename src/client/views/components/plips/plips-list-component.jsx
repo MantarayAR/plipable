@@ -55,7 +55,7 @@ PlipsListComponent = React.createClass({
           {this.data.plips.map(function(plip, i){
             return (
               <div key={plip._id}>
-                <PlipListItemComponent plip={plip} />
+                <MeteorPlipListItemComponent plip={plip} />
               </div>
             );
           })}

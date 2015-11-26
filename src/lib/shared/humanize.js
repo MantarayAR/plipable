@@ -1,7 +1,17 @@
-Humanize = {
+var $1 = null;
+
+if (typeof require !== 'undefined') {
+  $1 = require('moment');
+} else {
+  $1 = this.moment;
+}
+
+var moment = $1;
+
+var $out = {
   Time : {
     humanize : function(seconds) {
-      outputFormat = 'm:ss';
+      var outputFormat = 'm:ss';
 
       if (seconds > 60 * 60) {
         outputFormat = 'h:mm:ss';
@@ -21,6 +31,13 @@ Humanize = {
   }
 }
 
-if (typeof __ === 'undefined') {
-  __ = Humanize;
+if (typeof module !== 'undefined') {
+  module.exports = $out;
+} else {
+  Humanize = $out;
+
+  // Alias for Meteor
+  if (typeof __ === 'undefined') {
+    __ = Humanize;
+  }
 }

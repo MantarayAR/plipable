@@ -29,7 +29,8 @@ gulp.task( 'compile', function() {
       resolve: {
         root: path.join(__dirname, 'extension-src'),
         alias: {
-          shared: path.join(__dirname, 'src/client/shared/')
+          shared: path.join(__dirname, 'src/client/shared/'),
+          'shared-lib': path.join(__dirname, 'src/lib/shared/')
         }
       },
       resolveLoader: {

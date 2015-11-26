@@ -3,8 +3,10 @@ var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppLoadingComponent = require('shared/components/app-loading-component.jsx');
-var PlipListItemComponent = require('./plip-list-item-component.jsx');
+var PlipListItemComponent = require('shared/components/plip-list-item-component.jsx');
 var SetIntervalMixin = require('components/mixins/set-interval-mixin');
+
+var _ = require('underscore');
 
 var PlipCardComponent = React.createClass({
   mixins: [SetIntervalMixin],
@@ -75,6 +77,13 @@ var PlipCardComponent = React.createClass({
       );
     }
 
+    var sortedPlips = _.sortBy(
+      this.state.plips,
+      function(plip) {
+        return -plip.videoTimestamp
+      }
+    );
+
     return (
       <div className="plipable-plips">
         {$$signin}
@@ -84,10 +93,16 @@ var PlipCardComponent = React.createClass({
               transitionEnterTimeout={1000}
               transitionLeaveTimeout={1000}
               name="plip-items">
-          {this.state.plips.map(function(plip, i){
+          {sortedPlips.map(function(plip, i){
+            // TODO canDelete
+            // TODO handleDelete callback
+            var canDelete = false;
             return (
               <div key={plip._id}>
-                <PlipListItemComponent plip={plip} />
+                <PlipListItemComponent
+                    plip={plip}
+                    canDelete={canDelete}
+                    handleDelete={null}/>
               </div>
             );
           })}

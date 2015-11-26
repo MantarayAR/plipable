@@ -5,8 +5,8 @@ if (typeof require !== 'undefined') {
   $1 = require('react');
   $2 = require('react-dom');
 } else {
-  $1 = React;
-  $2 = ReactDOM;
+  $1 = this.React;
+  $2 = this.ReactDOM;
 }
 
 var React = $1;
