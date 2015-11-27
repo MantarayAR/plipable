@@ -1,8 +1,7 @@
 // Require Asteroid dependencies
 window.Q = require('asteroid/node_modules/q/q');
 window.DDP = require('asteroid/node_modules/ddp.js/src/ddp');
-var Asteroid = require('asteroid/dist/asteroid.chrome');
-var _twitter = require('asteroid/dist/plugins/facebook-login');
+var Asteroid = require('plugins/asteroid-in-browser');
 
 var $ = require('jquery');
 var React = require('react');
@@ -45,6 +44,7 @@ var Application = function() {
       var timelineCard = _initializeTimelineCard();
       var asteroid = _initializeAsteroid();
       var react = _initializeReact(plipCard, timelineCard, asteroid);
+      _initializeLogInCallback(asteroid);
     }, 1000);
   }
 
@@ -98,6 +98,12 @@ var Application = function() {
   var _initializeReact = function(plipCard, timelineCard, Asteroid) {
     new TimelineContainer(Asteroid, timelineCard[0]);
     new PlipContainer(Asteroid, plipCard[0]);
+  }
+
+  var _initializeLogInCallback = function(Asteroid) {
+    window.plipableLoginAsUser = function(userId) {
+      Asteroid.login(userId);
+    }
   }
 
   return _constructor();

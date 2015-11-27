@@ -3,8 +3,9 @@ var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppLoadingComponent = require('shared/components/app-loading-component.jsx');
-var PlipListItemComponent = require('shared/components/plip-list-item-component.jsx');
+var AsteroidPlipListItemComponent = require('./asteroid-plip-list-item-component.jsx');
 var SetIntervalMixin = require('components/mixins/set-interval-mixin');
+var LoginComponent = require('components/accounts/login-component.jsx');
 
 var _ = require('underscore');
 
@@ -60,6 +61,12 @@ var PlipCardComponent = React.createClass({
           plips: reactivePlips.result
         });
       }.bind(this));
+
+      if (this.props.Asteroid.user()) {
+        this.setState({
+          isLoggedIn: true
+        });
+      }
     }.bind(this), 1000);
   },
   render() {
@@ -72,7 +79,8 @@ var PlipCardComponent = React.createClass({
     if (! this.state.isLoggedIn) {
       $$signin = (
         <div>
-          TODO login component
+          <LoginComponent 
+            Asteroid={this.props.Asteroid}/>
         </div>
       );
     }
@@ -84,6 +92,7 @@ var PlipCardComponent = React.createClass({
       }
     );
 
+    var Asteroid = this.props.Asteroid;
     return (
       <div className="plipable-plips">
         {$$signin}
@@ -94,15 +103,11 @@ var PlipCardComponent = React.createClass({
               transitionLeaveTimeout={1000}
               name="plip-items">
           {sortedPlips.map(function(plip, i){
-            // TODO canDelete
-            // TODO handleDelete callback
-            var canDelete = false;
             return (
               <div key={plip._id}>
-                <PlipListItemComponent
-                    plip={plip}
-                    canDelete={canDelete}
-                    handleDelete={null}/>
+                <AsteroidPlipListItemComponent
+                    Asteroid={Asteroid}
+                    plip={plip} />
               </div>
             );
           })}

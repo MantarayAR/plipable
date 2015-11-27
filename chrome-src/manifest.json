@@ -8,6 +8,9 @@
   "icons": {
     "48": "images/icon-48x48.png"
   },
+  "background": {
+    "scripts": ["background.js"]
+  },
   "default_locale": "en",
   "content_scripts": [
     {
@@ -16,14 +19,13 @@
         "inject.js"
       ],
       "css": ["app.css"],
-      "run_at": "document_start"
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
     "index.js"
   ],
   "permissions": [
-    "activeTab",
     "tabs",
     "storage",
     "http://www.youtube.com/",

@@ -1,3 +1,4 @@
+//----------------- LOAD START --------------------\\
 var $1 = null;
 var $2 = null;
 
@@ -11,6 +12,7 @@ if (typeof require !== 'undefined') {
 
 var React = $1;
 var ReactDOM = $2;
+//----------------- LOAD END --------------------\\
 
 /**
  * Reusable app loading component
@@ -26,8 +28,10 @@ var $out = React.createClass({
   }
 });
 
+//----------------- EXPORT START --------------------\\
 if (typeof module !== 'undefined') {
   module.exports = $out;
 } else {
   AppLoadingComponent = $out;
 }
+//----------------- EXPORT END --------------------\\

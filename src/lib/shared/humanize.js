@@ -1,3 +1,4 @@
+//----------------- LOAD START --------------------\\
 var $1 = null;
 
 if (typeof require !== 'undefined') {
@@ -7,6 +8,7 @@ if (typeof require !== 'undefined') {
 }
 
 var moment = $1;
+//----------------- LOAD END --------------------\\
 
 var $out = {
   Time : {
@@ -16,7 +18,6 @@ var $out = {
       if (seconds > 60 * 60) {
         outputFormat = 'h:mm:ss';
       }
-
 
       return moment.utc(seconds * 1000).format(outputFormat);
     }
@@ -31,6 +32,7 @@ var $out = {
   }
 }
 
+//----------------- EXPORT START --------------------\\
 if (typeof module !== 'undefined') {
   module.exports = $out;
 } else {
@@ -41,3 +43,4 @@ if (typeof module !== 'undefined') {
     __ = Humanize;
   }
 }
+//----------------- EXPORT END --------------------\\

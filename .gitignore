@@ -12,6 +12,8 @@ src/mup.json
 
 # Chrome
 chrome-src/index.js
+chrome-src/background.js
+chrome-src/inject.js
 chrome-src/app.css
 
 # Extension
