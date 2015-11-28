@@ -9,13 +9,16 @@ Asteroid.prototype.login = function(userId) {
     _id: userId
   });
 
-  query.on('change', function () {
+  var callback = function () {
     var users = query.result;
 
     if (users && users.length > 0) {
       amplify('plipable-user', users[0]);
     }
-  });
+  };
+
+  query.on('change', callback);
+  callback();
 }
 
 var oldLogout = Asteroid.prototype.logout;

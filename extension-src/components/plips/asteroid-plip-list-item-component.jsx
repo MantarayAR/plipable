@@ -11,7 +11,7 @@ var AsteroidPlipListItemComponent = React.createClass({
     var canDelete = false;
 
     if (this.props.Asteroid.user()) {
-      canDelete = this.props.Asteroid.user().username === this.props.plip.username;  
+      canDelete = this.props.Asteroid.user().services.twitter.screenName === this.props.plip.username;  
     }
     
     return (

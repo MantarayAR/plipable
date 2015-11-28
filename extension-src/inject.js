@@ -25,9 +25,6 @@ var _boot = function () {
 
     document.addEventListener('plipable-login-event', function(e) {
       chrome.runtime.sendMessage(e, {}, function(response) {
-        console.log('i am the inject script callback');
-        console.log(response);
-
         injectLoggedInAsUserId(response);
       });
     }, false);

@@ -5,7 +5,7 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var AppLoadingComponent = require('shared/components/app-loading-component.jsx');
 var AsteroidPlipListItemComponent = require('./asteroid-plip-list-item-component.jsx');
 var SetIntervalMixin = require('components/mixins/set-interval-mixin');
-var LoginComponent = require('components/accounts/login-component.jsx');
+var AsteroidLoginComponent = require('components/accounts/asteroid-login-component.jsx');
 
 var _ = require('underscore');
 
@@ -13,7 +13,6 @@ var PlipCardComponent = React.createClass({
   mixins: [SetIntervalMixin],
   getInitialState() {
     return {
-      isLoggedIn: false,
       loading: true,
       plips: [],
       currentTime: 0
@@ -61,28 +60,11 @@ var PlipCardComponent = React.createClass({
           plips: reactivePlips.result
         });
       }.bind(this));
-
-      if (this.props.Asteroid.user()) {
-        this.setState({
-          isLoggedIn: true
-        });
-      }
     }.bind(this), 1000);
   },
   render() {
     if (this.state.loading) {
       return <AppLoadingComponent noText={true} />
-    }
-
-    var $$signin = '';
-
-    if (! this.state.isLoggedIn) {
-      $$signin = (
-        <div>
-          <LoginComponent 
-            Asteroid={this.props.Asteroid}/>
-        </div>
-      );
     }
 
     var sortedPlips = _.sortBy(
@@ -95,7 +77,7 @@ var PlipCardComponent = React.createClass({
     var Asteroid = this.props.Asteroid;
     return (
       <div className="plipable-plips">
-        {$$signin}
+        <AsteroidLoginComponent Asteroid={Asteroid}/>
         <ReactCSSTransitionGroup
               className="plips__list collection plip-items"
               transitionName='slide-down'
