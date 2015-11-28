@@ -1,8 +1,6 @@
 Plipable Chrome Extension
 =========================
 
-Install bower:
+Read the main README!
 
-```sh
-npm install -g bower
-```
+You need to run `gulp` before the plugin will actually work in chrome!
