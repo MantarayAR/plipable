@@ -1,3 +1,13 @@
+var head = document.head
+  , link = document.createElement('link');
+
+link.type = 'text/css';
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+head.appendChild(link);
+
+
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('index.js');
 s.onload = function() {
