@@ -65,7 +65,7 @@ var Application = function() {
       $oldCard.replaceWith($youtubePlips);
     } else {
       // Use id ends with with the hope that it won't change
-      $('div[id$="sidebar-contents"]').parent().prepend($youtubePlips);
+      $('div[id$="watch7-sidebar-contents"]').before($youtubePlips);
     }
 
     return $youtubePlips;
