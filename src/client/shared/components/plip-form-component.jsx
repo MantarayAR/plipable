@@ -1,11 +1,37 @@
+//----------------- LOAD START --------------------\\
+var $1 = null;
+var $2 = null;
+var $3 = null;
+var $4 = null;
+
+if (typeof require !== 'undefined') {
+  $1 = require('react');
+  $2 = require('react-dom');
+  $3 = require('shared-lib/humanize');
+  $4 = require('jquery');
+} else {
+  $1 = this.React;
+  $2 = this.ReactDOM;
+  $3 = this.Humanize;
+  $4 = this.$;
+}
+
+var React = $1;
+var ReactDOM = $2;
+var Humanize = $3;
+var $ = $4;
+
+//----------------- LOAD END --------------------\\
+
 /**
  * New Plip Form Component
  *
  * @param videoId String
  * @param currentTime String
  * @param closeModal Function(boolean)
+ * @param handleSubmit Function[videoId, videoTimestamp, comment, callback]
  */
-NewPlipFormComponent = React.createClass({
+var $out = React.createClass({
   componentDidMount() {
     var that = this;
     var timestamp = +new Date();
@@ -26,6 +52,9 @@ NewPlipFormComponent = React.createClass({
       }
     });
   },
+  closeModal(goBack) {
+    this.props.closeModal(goBack);
+  },
   handleSubmit(e) {
     e.preventDefault();
 
@@ -33,32 +62,11 @@ NewPlipFormComponent = React.createClass({
     var comment        = this.refs.comment.value;
     var videoTimestamp = this.props.currentTime;
 
-    // Validation
-
-    if (comment === "") {
-      Materialize.toast('Plips can\'t be empty!', 3000, 'red lighten-1');
-      return;
-    }
-    dispatch(new AnalyticsEventCommand(), 'Plips', 'New Plip', videoId);
-    Meteor.call('comment', videoId, comment, videoTimestamp, function(err, result) {
-      if (err) {
-        if (err.reason) {
-          Materialize.toast(err.reason, 3000, 'red lighten-1')
-        } else {
-          Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
-        }
-      } else {
-        Materialize.toast('Post Successful', 4000)
-      }
-    });
-    this.closeModal();
-  },
-  closeModal(goBack) {
-    this.props.closeModal(goBack);
+    this.props.handleSubmit(videoId, videoTimestamp, comment, this.closeModal);
   },
   render() {
     var currentTime = this.props.currentTime;
-    currentTime     = __.Time.humanize(currentTime);
+    currentTime     = Humanize.Time.humanize(currentTime);
 
     return (
       <div className="row">
@@ -82,3 +90,13 @@ NewPlipFormComponent = React.createClass({
     );
   }  
 });
+
+
+//----------------- EXPORT START --------------------\\
+if (typeof module !== 'undefined') {
+  module.exports = $out;
+} else {
+  PlipFormComponent = $out;
+}
+//----------------- EXPORT END --------------------\\
+

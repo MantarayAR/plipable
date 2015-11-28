@@ -6,6 +6,7 @@ var AppLoadingComponent = require('shared/components/app-loading-component.jsx')
 var AsteroidPlipListItemComponent = require('./asteroid-plip-list-item-component.jsx');
 var SetIntervalMixin = require('components/mixins/set-interval-mixin');
 var AsteroidLoginComponent = require('components/accounts/asteroid-login-component.jsx');
+var AsteroidNewPlipComponent = require('components/plips/asteroid-new-plip-component.jsx');
 
 var _ = require('underscore');
 
@@ -51,6 +52,7 @@ var PlipCardComponent = React.createClass({
       }.bind(this));
 
       this.setState({
+        currentTime: currentTime,
         loading: false,
         plips: reactivePlips.result
       });
@@ -77,6 +79,10 @@ var PlipCardComponent = React.createClass({
     var Asteroid = this.props.Asteroid;
     return (
       <div className="plipable-plips">
+        <AsteroidNewPlipComponent
+          Asteroid={Asteroid}
+          currentTime={this.state.currentTime}
+          videoId={this.props.youtubeId}/>
         <AsteroidLoginComponent Asteroid={Asteroid}/>
         <ReactCSSTransitionGroup
               className="plips__list collection plip-items"

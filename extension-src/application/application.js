@@ -3,6 +3,9 @@ window.Q = require('asteroid/node_modules/q/q');
 window.DDP = require('asteroid/node_modules/ddp.js/src/ddp');
 var Asteroid = require('plugins/asteroid-in-browser');
 
+window.jQuery = require('jquery');
+require('materialize-css/dist/js/materialize.js');
+
 var $ = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -53,7 +56,7 @@ var Application = function() {
    */
   var _initializePlipCard = function() {
     var $youtubePlips = $('<div>')
-      .addClass('yt-card yt-card-has-padding plipable-card')
+      .addClass('yt-card yt-card-has-padding plipable-card plipable')
       .attr('id', 'plipable-plips');
 
     var $oldCard = $('#plipable-plips');
@@ -70,7 +73,7 @@ var Application = function() {
 
   var _initializeTimelineCard = function() {
     var $youtubeTimeline = $('<div>')
-      .addClass('yt-card plipable-card')
+      .addClass('yt-card plipable-card plipable')
       .attr('id', 'plipable-timeline');
 
     var $oldCard = $('#plipable-timeline');
@@ -101,8 +104,8 @@ var Application = function() {
   }
 
   var _initializeLogInCallback = function(Asteroid) {
-    window.plipableLoginAsUser = function(userId) {
-      Asteroid.login(userId);
+    window.plipableLoginAsUser = function(userId, appToken) {
+      Asteroid.login(userId, appToken);
     }
   }
 

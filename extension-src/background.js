@@ -8,11 +8,21 @@ chrome.runtime.onMessage.addListener(function(myMessage, sender, sendResponse){
 
   var promise = a.loginWithTwitter();
 
-  promise.then(function(result) {
-    console.log(result);
-    sendResponse(result);
-  }, function(reason) {
-    console.log(reason);
+  promise.then(function(userId) {
+    // We have the user's id, time
+    // to get an app token
+    var appPromise = a.call('appToken', userId);
+
+    appPromise.result.then(function(appToken) {
+      console.log(appToken);
+      // Here we have an app token,
+      // send the userId and the appToken
+      // back to the injected script
+      sendResponse({
+        userId: userId,
+        appToken: appToken
+      });
+    });
   });
 
   // We are indicating that this request will

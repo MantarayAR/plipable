@@ -3,7 +3,11 @@
  | Main Stylesheet
  |--------------------------------
  */
-@import "node_modules/materialize-css/sass/materialize.scss";
+
+.plipable {
+  @import "node_modules/materialize-css/sass/materialize.scss";  
+}
+
 @import "../../src/client/stylesheets/variables";
 @import "../../src/client/stylesheets/colors";
 @import "../../src/client/stylesheets/imports";

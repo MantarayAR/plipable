@@ -4,8 +4,22 @@ var PlipListItemComponent = require('shared/components/plip-list-item-component.
 
 var AsteroidPlipListItemComponent = React.createClass({
   handleDelete(plipId) {
-    // TODO
-    console.log(this.props.Asteroid);
+    var plipId = this.props.plip._id;
+    var userId = this.props.Asteroid.user()._id;
+    var token = this.props.Asteroid.token();
+
+    var call = this.props.Asteroid.call(
+      'deleteWithToken',
+      this.props.plip._id,
+      userId,
+      token
+    );
+
+    call.result.then(function(result) {
+      //
+    }).catch(function(error) {
+      console.log(error);
+    });
   },
   render() {
     var canDelete = false;

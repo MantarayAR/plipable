@@ -6,10 +6,13 @@ s.onload = function() {
 (document.head || document.documentElement).appendChild(s);
 
 var alreadyAttached = false;
-var injectLoggedInAsUserId = function(userId) {
+var injectLoggedInAsUserId = function(response) {
+  var userId = response.userId;
+  var appToken = response.appToken;
+
   var actualCode = [
     '+function() {',
-      'window.plipableLoginAsUser("' + userId + '");',
+      'window.plipableLoginAsUser("' + userId + '", "' + appToken + '");',
     '}();'
   ].join('\n');
 
