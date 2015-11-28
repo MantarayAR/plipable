@@ -1,8 +1,20 @@
 # System Files >.>
 .DS_Store
 
+# Node
+/node_modules/
+
 # Settings
 src/settings.json
 src/settings.prod.json
 src/settings.local.json
 src/mup.json
+
+# Chrome
+chrome-src/index.js
+chrome-src/background.js
+chrome-src/inject.js
+chrome-src/app.css
+
+# Extension
+extension-src/settings.json

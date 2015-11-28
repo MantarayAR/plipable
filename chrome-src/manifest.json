@@ -1,0 +1,35 @@
+{
+  "name": "Plipable",
+  "version": "0.0.1",
+  "minimum_chrome_version": "41.0",
+  "manifest_version": 2,
+  "description": "It's like Soundcloud comments for Youtube",
+  "author": "Mantaray AR",
+  "icons": {
+    "48": "images/icon-48x48.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": [
+        "inject.js"
+      ],
+      "css": ["app.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "index.js"
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "http://www.youtube.com/",
+    "https://www.youtube.com/"
+  ],
+  "homepage_url": "http://plipable.com"
+}
