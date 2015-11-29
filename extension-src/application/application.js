@@ -3,12 +3,11 @@ window.Q = require('asteroid/node_modules/q/q');
 window.DDP = require('asteroid/node_modules/ddp.js/src/ddp');
 var Asteroid = require('plugins/asteroid-in-browser');
 
+// Setup Materialize
 window.jQuery = require('jquery');
 require('materialize-css/dist/js/materialize.js');
 
 var $ = require('jquery');
-var React = require('react');
-var ReactDOM = require('react-dom');
 
 var PlipContainer = require('containers/plip-container.jsx');
 var TimelineContainer = require('containers/timeline-container.jsx');
@@ -19,7 +18,8 @@ var settings = require('json!settings.json');
  | Application Boot
  |------------------------------
  |
- |
+ | Setup observers to reboot and
+ | initialize the application
  |
  */
 var Application = function() {
@@ -41,6 +41,10 @@ var Application = function() {
     _boot();
   }
 
+  /**
+   * Setup a timer since Youtube takes a little
+   * bit of time to load
+   */
   var _boot = function() {
     setTimeout(function() {
       var plipCard = _initializePlipCard();
