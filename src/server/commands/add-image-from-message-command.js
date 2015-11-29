@@ -1,7 +1,7 @@
 AddImageFromMessageCommand = function() {
   var handle = function(plipId, message) {
     if (Giphy.isGiphyMessage(message)) {
-      var giphyUrl = 'http://api.giphy.com/v1/gifs/translate';
+      var giphyUrl = 'https://api.giphy.com/v1/gifs/translate';
       var search = message.substr(message.indexOf(' ') + 1);
 
       var options = {
