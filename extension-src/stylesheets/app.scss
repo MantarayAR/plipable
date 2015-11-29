@@ -13,5 +13,7 @@
 @import "../../src/client/stylesheets/imports";
 
 .plipable {
-  @import "buttons";  
+  @import "buttons";
+  @import "colors";
+  @import "bem/_extras";
 }
