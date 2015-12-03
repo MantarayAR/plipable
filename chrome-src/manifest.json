@@ -1,6 +1,7 @@
 {
   "name": "Plipable",
-  "version": "0.0.1",
+  "short_name": "Plipable",
+  "version": "1.0.0",
   "minimum_chrome_version": "41.0",
   "manifest_version": 2,
   "description": "It's like Soundcloud comments for Youtube",

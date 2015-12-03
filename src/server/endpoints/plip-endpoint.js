@@ -45,6 +45,7 @@ Meteor.methods({
     var username  = user.services.twitter.screenName;
     var thumbnail = user.services.twitter.profile_image_url_https || '';
 
+    dispatch(new CheckYoutubeVideoCommand(), videoId);
     dispatch(new AddNewPlipCommand(), videoId, username, thumbnail, message, videoTimestamp);
   },
   delete: function(plipId) {
