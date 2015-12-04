@@ -30,10 +30,10 @@ var AsteroidNewPlipComponent = React.createClass({
       Materialize.toast('Post Successful', 4000);
     }).catch(function(err) {
       if (err.reason) {
-          Materialize.toast(err.reason, 3000, 'red lighten-1')
-        } else {
-          Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
-        }
+        Materialize.toast(err.reason, 3000, 'red lighten-1')
+      } else {
+        Materialize.toast('Something bad happened :(', 3000, 'red lighten-1')
+      }
     });
 
     closeCallback();

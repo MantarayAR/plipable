@@ -11,6 +11,7 @@ var AsteroidNewPlipComponent = require('components/plips/asteroid-new-plip-compo
 var _ = require('underscore');
 
 var PlipCardComponent = React.createClass({
+  subscription: null,
   mixins: [SetIntervalMixin],
   getInitialState() {
     return {
@@ -19,9 +20,12 @@ var PlipCardComponent = React.createClass({
       currentTime: 0
     }
   },
+  componentWillUnmount() {
+    this.subscription.stop();
+  },
   componentDidMount() {
     var Asteroid = this.props.Asteroid;
-    var subscription = Asteroid.subscribe('plips', this.props.youtubeId);
+    this.subscription = Asteroid.subscribe('plips', this.props.youtubeId);
     var Plips = Asteroid.getCollection('plips');
     var ytplayer = document.getElementById("movie_player");
 

@@ -10,8 +10,8 @@ var Application = require('application/application');
  */
 function initialize() {
   if (window.top === window) {
-    if (window.location.host === 'plipable.com') {
-      document.body.classList.add('installed');
+    if (window.location.host === 'www.plipable.com') {
+      document.body.classList.add('chrome-extension-installed');
     } else {
       new Application();
     }

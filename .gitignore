@@ -12,6 +12,7 @@ src/mup.json
 src/ssl.pem
 
 # Chrome
+plipable.zip
 chrome-src/index.js
 chrome-src/background.js
 chrome-src/inject.js

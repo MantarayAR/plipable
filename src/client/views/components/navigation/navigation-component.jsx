@@ -74,6 +74,8 @@ NavigationComponent = React.createClass({
       <li key="search"><a href="#!" onClick={this.handleSearch}>Search</a></li>
     ), (
       <li key="about"><a href="/about">About</a></li>
+    ), (
+      <li key="apps"><a href="/apps">Apps</a></li>
     )];
 
     if (this.data.isLoggedIn) {

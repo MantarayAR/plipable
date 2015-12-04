@@ -6,6 +6,7 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 var PlipTimelineComponent = React.createClass({
+  subscription: null,
   mixins: [SetIntervalMixin],
   getInitialState() {
     return {
@@ -15,9 +16,12 @@ var PlipTimelineComponent = React.createClass({
       currentTime: 0
     }
   },
+  componentWillUnmount() {
+    this.subscription.stop();
+  },
   componentDidMount() {
     var Asteroid = this.props.Asteroid;
-    var subscription = Asteroid.subscribe('plips', this.props.youtubeId);
+    this.subscription = Asteroid.subscribe('plips', this.props.youtubeId);
     var Plips = Asteroid.getCollection('plips');
 
     var reactivePlips = Plips.reactiveQuery({
