@@ -78,6 +78,12 @@ ViewPage = React.createClass({
       $$contents = (
         <div className="view">
           {$$error}
+
+          <div className="view__meta">
+            <h1>{this.state.result.snippet.title} via Plipable</h1>
+            <img src={this.state.result.snippet.thumbnails['high'].url} />
+          </div>
+
           <div className="row view__player">
             <div className="col s12 m8 offset-m2 l8">
               <VideoPlayerComponent
