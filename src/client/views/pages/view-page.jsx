@@ -23,6 +23,32 @@ ViewPage = React.createClass({
           that.setState({ error: err.reason });
         } else {
           that.setState({ result: result });
+
+          dispatch(new SetMetaTagsCommand(), {
+            title: result.snippet.title,
+            meta: [
+              {
+                name:'description',
+                content:result.snippet.description
+              },
+              {
+                name:'og:title',
+                content:result.snippet.title
+              },
+              {
+                name:'og:description',
+                content:result.snippet.description
+              },
+              {
+                name:'og:type',
+                content:'video'
+              },
+              {
+                name:'og:image',
+                content: result.snippet.thumbnails['high'].url
+              }
+            ]
+          });
         }
 
         that.setState({ appLoading: false });

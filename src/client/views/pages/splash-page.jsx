@@ -1,5 +1,6 @@
 SplashPage = React.createClass({
   componentDidMount() {
+    dispatch(new SetMetaTagsCommand(), {});
     this.handleResize();
     window.addEventListener('resize', this.handleResize);
 

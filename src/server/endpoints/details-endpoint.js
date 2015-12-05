@@ -5,6 +5,8 @@ YoutubeApi.authenticate({
 
 Meteor.methods({
   details: function(videoId) {
+    // TODO only ask for the video if we haven't before
+
     var response = Async.runSync(function(done) {
       YoutubeApi.videos.list({
           part: "id,snippet,contentDetails,player",

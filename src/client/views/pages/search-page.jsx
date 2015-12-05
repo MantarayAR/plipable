@@ -1,4 +1,7 @@
 SearchPage = React.createClass({
+  componentDidMount() {
+    dispatch(new SetMetaTagsCommand(), {});
+  },
   search(text) {
     FlowRouter.setQueryParams({ search: encodeURIComponent(text) });
   },

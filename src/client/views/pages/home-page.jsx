@@ -1,5 +1,8 @@
 HomePage = React.createClass({
   mixins: [ReactMeteorData],
+  componentDidMount() {
+    dispatch(new SetMetaTagsCommand(), {});
+  },
   getMeteorData() {
     var isLoggedIn = !! Meteor.userId();
 

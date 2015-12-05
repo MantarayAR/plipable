@@ -22,7 +22,7 @@ var ReactDOM = $2;
 var $out = React.createClass({
   render() {
     return (
-      <div>
+      <div className="text-left">
         <h2>
           Web Site Terms and Conditions of Use
         </h2>

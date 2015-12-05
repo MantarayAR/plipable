@@ -5,6 +5,16 @@ AppsPage = React.createClass({
     }
   },
   componentDidMount() {
+    dispatch(new SetMetaTagsCommand(), {
+      title: 'Apps',
+      meta: [
+        {
+          name:'description',
+          content:'Download and install awesome apps by Plipable'
+        }
+      ]
+    });
+
     setTimeout(function() {
       if ($('body').hasClass('chrome-extension-installed')) {
         this.setState({

@@ -25,36 +25,36 @@ SearchTabsComponent = React.createClass({
     var $$contents = [];
 
     if (this.props.searchText !== '' && typeof this.props.searchText != 'undefined') {
-      $$tabs.push(<li className="tab col s4"><a href="#latest-panel">Latest</a></li>);
-      $$tabs.push(<li className="tab col s4"><a href="#popular-panel">Popular</a></li>);
-      $$tabs.push(<li className="tab col s4"><a className="active" href="#search-panel">Search</a></li>);
+      $$tabs.push(<li key="latest" className="tab col s4"><a href="#latest-panel">Latest</a></li>);
+      $$tabs.push(<li key="popular" className="tab col s4"><a href="#popular-panel">Popular</a></li>);
+      $$tabs.push(<li key="search" className="tab col s4"><a className="active" href="#search-panel">Search</a></li>);
 
       $$contents.push(
-        <div id="latest-panel">
+        <div key="activity" id="latest-panel">
           <ActivityFeedComponent />
         </div>
       );
       $$contents.push(
-        <div id="popular-panel">
+        <div key="popular" id="popular-panel">
           <SearchResultsComponent searchText='' />
         </div>
       );
       $$contents.push(
-        <div id="search-panel">
+        <div key="search" id="search-panel">
           <SearchResultsComponent searchText={this.props.searchText} />
         </div>
       );
     } else {
-      $$tabs.push(<li className="tab col s6"><a className="active" href="#latest-panel">Latest</a></li>);
-      $$tabs.push(<li className="tab col s6"><a href="#popular-panel">Popular</a></li>);
+      $$tabs.push(<li key="latest" className="tab col s6"><a className="active" href="#latest-panel">Latest</a></li>);
+      $$tabs.push(<li key="popular" className="tab col s6"><a href="#popular-panel">Popular</a></li>);
 
       $$contents.push(
-        <div id="latest-panel">
+        <div key="activity" id="latest-panel">
           <ActivityFeedComponent />
         </div>
       );
       $$contents.push(
-        <div id="popular-panel">
+        <div key="popular" id="popular-panel">
           <SearchResultsComponent searchText='' />
         </div>
       );
