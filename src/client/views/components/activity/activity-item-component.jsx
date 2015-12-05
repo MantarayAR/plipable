@@ -8,7 +8,11 @@ ActivityItemComponent = React.createClass({
     FlowRouter.go('/v/' + id);
   },
   render() {
-    var description = __.String.truncate(this.props.activity.description, 200, true);
+    var description = '';
+
+    if (this.props.activity.description) {
+      description = __.String.truncate(this.props.activity.description, 200, true);
+    }
 
     return (
       <div className="activity-feed__item collection-item" onClick={this.handleClick}>
