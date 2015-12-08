@@ -11,7 +11,12 @@ module.exports = (function() {
     return null;
   };
 
+  var getCurrentYoutubeTitle = function() {
+    return document.getElementsByClassName('watch-title')[0].innerHTML.trim();
+  }
+
   return {
-    getCurrentYoutubeId: getCurrentYoutubeId
+    getCurrentYoutubeId: getCurrentYoutubeId,
+    getCurrentYoutubeTitle: getCurrentYoutubeTitle
   };
 })();

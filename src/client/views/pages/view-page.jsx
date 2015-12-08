@@ -24,28 +24,50 @@ ViewPage = React.createClass({
         } else {
           that.setState({ result: result });
 
+          var image = result.snippet.thumbnails['high'].url;
+
           dispatch(new SetMetaTagsCommand(), {
             title: result.snippet.title,
             meta: [
               {
-                name:'description',
-                content:result.snippet.description
+                name: 'description',
+                content: result.snippet.description
               },
               {
-                name:'og:title',
-                content:result.snippet.title
+                name: 'og:title',
+                content: result.snippet.title
               },
               {
-                name:'og:description',
-                content:result.snippet.description
+                name: 'og:description',
+                content: result.snippet.description
               },
               {
-                name:'og:type',
+                name: 'og:type',
                 content:'video'
               },
               {
                 name:'og:image',
-                content: result.snippet.thumbnails['high'].url
+                content: image
+              },
+              {
+                name: 'twitter:card',
+                content: 'summary_large_image'
+              },
+              {
+                name: 'twitter:site',
+                content: '@mantarayar'
+              },
+              {
+                name: 'twitter:title',
+                content: result.snippet.title
+              },
+              {
+                name: 'twitter:description',
+                content: result.snippet.description
+              },
+              {
+                name: 'twitter:image',
+                content: image
               }
             ]
           });
@@ -95,7 +117,8 @@ ViewPage = React.createClass({
               <div className="plips__desktop">
                 <MeteorNewPlipComponent
                   videoId={this.props.videoId}
-                  currentTime={this.state.currentTime} />
+                  currentTime={this.state.currentTime} 
+                  title={this.state.result.snippet.title} />
                 <PlipsListComponent
                   videoId={this.props.videoId}
                   currentTime={this.state.currentTime} />

@@ -85,6 +85,7 @@ var PlipCardComponent = React.createClass({
       <div className="plipable-plips">
         <AsteroidNewPlipComponent
           Asteroid={Asteroid}
+          title={this.props.title}
           currentTime={this.state.currentTime}
           videoId={this.props.youtubeId}/>
         <AsteroidLoginComponent Asteroid={Asteroid}/>

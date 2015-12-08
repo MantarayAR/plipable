@@ -5,15 +5,16 @@
  */
 
 .plipable {
-  @import "node_modules/materialize-css/sass/materialize.scss";  
+  @import "node_modules/materialize-css/sass/materialize.scss";
 }
 
 @import "../../src/client/stylesheets/variables";
 @import "../../src/client/stylesheets/colors";
-@import "../../src/client/stylesheets/imports";
 
 .plipable {
   @import "buttons";
   @import "colors";
   @import "bem/_extras";
 }
+
+@import "../../src/client/stylesheets/imports";

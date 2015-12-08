@@ -1,10 +1,10 @@
 {
   "name": "Plipable",
   "short_name": "Plipable",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "minimum_chrome_version": "41.0",
   "manifest_version": 2,
-  "description": "It's like Soundcloud comments for Youtube",
+  "description": "Soundcloud style comments for Youtube",
   "author": "Mantaray AR",
   "icons": {
     "48": "images/icon-48x48.png"

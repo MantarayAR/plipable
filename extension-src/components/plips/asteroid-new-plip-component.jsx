@@ -42,6 +42,7 @@ var AsteroidNewPlipComponent = React.createClass({
     return (
       <PlipModalComponent
         videoId={this.props.videoId}
+        title={this.props.title}
         currentTime={this.props.currentTime}
         handleSubmit={this.handleSubmit}
         isLoggedIn={this.state.isLoggedIn} />

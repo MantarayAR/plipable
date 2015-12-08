@@ -1,20 +1,51 @@
 .plip__floating-button {
   position: relative;
+}
 
-  .btn-floating {
+.plip__floating-button--container {
+  .plipable &,
+  & {
+    margin-right: -28px;
+    margin-top: -28px;
+    position: absolute;
+    right: 0%;
+    width: 55px;
+    z-index: 6000;
+
+    transition: width .3s ease;
+  }
+}
+
+.plip__floating-button--comment {
+  .plipable &,
+  & {
+    @extend .btn-floating;
+    @extend .btn-large;
+    @extend .white;
+
+    position: absolute;
+    right: 0%;
     z-index: 6000;
 
     i {
       color: $brand-color;
     }
   }
+}
 
-  a {
-    color: $brand-color;
-    margin-right: -28px;
-    margin-top: -28px;
-    position: absolute;
-    right: 0%;
+.plip__floating-button--twitter {
+  .plipable &,
+  & {
+    @extend .btn-floating;
+    @extend .btn-large;
+    @extend .twitter-color;
+    @extend .white-text;
+
+    z-index: 5999;
+  }
+
+  .plipable .plip__floating-button & {
+    position: relative !important;
   }
 }
 
@@ -165,7 +196,7 @@ $plip-timeline-height: 50px;
     margin: 2vw;
   }
 
-  .plip__floating-button a {
+  .plip__floating-button--container {
     margin-right: 1vh;
     margin-top: 1vh;
   }
