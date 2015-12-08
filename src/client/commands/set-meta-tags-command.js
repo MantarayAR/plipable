@@ -41,6 +41,12 @@ SetMetaTagsCommand = function() {
     ],
     'link' : [
       {
+        rel:'search',
+        type:'application/opensearchdescription+xml',
+        title: 'Plipable',
+        href: '/opensearch.xml'
+      },
+      {
         rel:"apple-touch-icon",
         sizes: "57x57",
         href: "/apple-touch-icon-57x57.png"
