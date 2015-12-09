@@ -26,7 +26,7 @@ SearchTabsComponent = React.createClass({
 
     if (this.props.searchText !== '' && typeof this.props.searchText != 'undefined') {
       $$tabs.push(<li key="latest" className="tab col s4"><a href="#latest-panel">Latest</a></li>);
-      $$tabs.push(<li key="popular" className="tab col s4"><a href="#popular-panel">Popular</a></li>);
+      $$tabs.push(<li key="popular" className="tab col s4"><a href="#popular-panel"><i class="fa fa-youtube-play"></i> Trending</a></li>);
       $$tabs.push(<li key="search" className="tab col s4"><a className="active" href="#search-panel">Search</a></li>);
 
       $$contents.push(
@@ -46,7 +46,7 @@ SearchTabsComponent = React.createClass({
       );
     } else {
       $$tabs.push(<li key="latest" className="tab col s6"><a className="active" href="#latest-panel">Latest</a></li>);
-      $$tabs.push(<li key="popular" className="tab col s6"><a href="#popular-panel">Popular</a></li>);
+      $$tabs.push(<li key="popular" className="tab col s6"><a href="#popular-panel"><i class="fa fa-youtube-play"></i> Trending</a></li>);
 
       $$contents.push(
         <div key="activity" id="latest-panel">
