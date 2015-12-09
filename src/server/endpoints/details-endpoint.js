@@ -33,6 +33,7 @@ Meteor.methods({
           var thumbnail = video.snippet.thumbnails['default'].url;
           var tags = video.snippet.tags;
 
+          dispatch(new QueueVideoCommand(), videoId);
           dispatch(new UpsertVideoCommand(), videoId, videoType, title, thumbnail, description, tags);
 
           return video;
