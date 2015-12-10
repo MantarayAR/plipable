@@ -34,9 +34,9 @@ Meteor.methods({
           done(err, data);
         });
       }
-
-      
     });
+
+    dispatch(new QueueVideosCommand(), response.result);
 
     return response.result;
   }

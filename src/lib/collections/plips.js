@@ -26,7 +26,7 @@ PlipsSchema = new SimpleSchema({
   },
   'image.url': {
     type: String,
-    label: "Plit Image Url",
+    label: "Plip Image Url",
     optional: true
   },
   'image.type': {

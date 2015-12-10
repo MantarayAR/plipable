@@ -1,7 +1,7 @@
 {
   "name": "Plipable",
   "short_name": "Plipable",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "minimum_chrome_version": "41.0",
   "manifest_version": 2,
   "description": "Soundcloud style comments for Youtube",
@@ -16,15 +16,23 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.youtube.com/*",
-        "*://www.plipable.com/*"
+        "*://www.youtube.com/*"
       ],
       "js": [
         "inject.js"
       ],
       "css": ["app.css"],
       "run_at": "document_end"
-    }
+    },
+    {
+      "matches": [
+        "*://www.plipable.com/*"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "run_at": "document_end"
+    } 
   ],
   "web_accessible_resources": [
     "index.js"
