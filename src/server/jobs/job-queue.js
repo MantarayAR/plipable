@@ -13,15 +13,17 @@ var _JobQueue = function() {
         }
       }, {
         sort: {
-          createdAt: -1
+          createdAt: 1
         }
       });
-      console.log('run');
+
       if (job != null) {
         JobCollection.update({
           _id: job._id
         }, {
-          status: _STATES.IN_PROGRESS
+          $set: {
+            status: _STATES.IN_PROGRESS
+          }
         });
 
         if (job.type === 'video') {
@@ -32,11 +34,12 @@ var _JobQueue = function() {
         } else if (job.type === 'comments') {
           dispatch(
             new GetYoutubeCommentsByNextPageTokenCommand(),
+            job.videoId,
             job.nextPageToken
           );
         }
       }
-    }, 1000);
+    }, 3000);
   };
 
   return {

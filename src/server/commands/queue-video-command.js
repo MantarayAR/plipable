@@ -5,7 +5,12 @@ QueueVideoCommand = function () {
       type: 'video'
     });
 
-    if (visited == null) {
+    var queued = JobCollection.findOne({
+      type: 'video',
+      videoId: videoId
+    });
+
+    if (visited == null && queued == null) {
       JobCollection.insert({
         videoId: videoId,
         type: 'video',

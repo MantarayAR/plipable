@@ -1,5 +1,5 @@
 QueueCommentsCommand = function () {
-  var handle = function (nextPageToken) {
+  var handle = function (videoId, nextPageToken) {
     var visited = VisitedCollection.findOne({
       nextPageToken: nextPageToken,
       type: 'comments'
@@ -7,6 +7,7 @@ QueueCommentsCommand = function () {
 
     if (visited == null) {
       JobCollection.insert({
+        videoId: videoId,
         nextPageToken: nextPageToken,
         type: 'comments',
         createdAt: +new Date()
