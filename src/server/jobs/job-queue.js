@@ -38,6 +38,10 @@ var _JobQueue = function() {
             job.nextPageToken
           );
         }
+
+        JobCollection.remove({
+          _id: job._id
+        });
       }
     }, 3000);
   };
