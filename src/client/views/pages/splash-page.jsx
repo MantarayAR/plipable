@@ -18,6 +18,7 @@ SplashPage = React.createClass({
     var innerWidth = width * (253.0/305.0);
     var innerMarginTop = width * (80.0/305.0);
     $('#splash-cat').css({width: innerWidth + 'px', 'marginTop': innerMarginTop + 'px' });
+    $('#splash-cat-after').css({'marginTop': $('#iphone').height() + 'px' });
   },
   componentWillUnmount: function() {
     window.removeEventListener('resize', this.handleResize);
@@ -34,6 +35,12 @@ SplashPage = React.createClass({
               </div>
               <img id="iphone" src="/previews/phone.png" className="splash-page__preview-phone" />
             </a>
+            <div id="splash-cat-after">
+            </div>
+            <a className="btn white brand-text" href="/v/SSKatciX3hA">
+              <i className="material-icons right">play_arrow</i>
+              Watch Simon
+            </a>
           </div>
           <div className="col m6 s12">
             <img className="splash-page__logo" src="/logos/logo-reverse.png" />
@@ -42,7 +49,7 @@ SplashPage = React.createClass({
 
             <div className="row">
               <div className="col s6 offset-s3">
-                <LoginComponent />
+                <LoginComponent text="Start Plipping"/>
 
                 <p>Or, <a href="/s">search for videos</a> without signing in</p>
               </div>

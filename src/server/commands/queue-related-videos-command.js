@@ -3,7 +3,7 @@ QueueRelatedVideosCommand = function () {
     YoutubeApi.search.list({
       part: "id,snippet",
       type: "video",
-      maxResults: 20,
+      maxResults: 5,
       relatedToVideoId: videoId,
       relevanceLangauge: 'en',
     }, Meteor.bindEnvironment(function (err, data) {

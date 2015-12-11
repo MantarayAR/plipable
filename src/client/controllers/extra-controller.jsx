@@ -1,6 +1,6 @@
 ExtraController = function() {
   this.about = function(params, queryParams) {
-    var pageName = 'contact-us';
+    var pageName = 'about-us';
 
     if (params.pageName) {
       pageName = params.pageName;
