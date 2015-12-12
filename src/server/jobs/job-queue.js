@@ -6,44 +6,46 @@ var _JobQueue = function() {
   }
 
   var run = function () {
-    Meteor.setInterval(function() {
-      var job = JobCollection.findOne({
-        status: {
-          $ne: _STATES.IN_PROGRESS
-        }
-      }, {
-        sort: {
-          createdAt: 1
-        }
-      });
-
-      if (job != null) {
-        JobCollection.update({
-          _id: job._id
+    if (Meteor.settings.queue.active === 'true') {
+      Meteor.setInterval(function() {
+        var job = JobCollection.findOne({
+          status: {
+            $ne: _STATES.IN_PROGRESS
+          }
         }, {
-          $set: {
-            status: _STATES.IN_PROGRESS
+          sort: {
+            createdAt: 1
           }
         });
 
-        if (job.type === 'video') {
-          dispatch(
-            new GetYoutubeCommentsByVideoIdCommand(),
-            job.videoId
-          );
-        } else if (job.type === 'comments') {
-          dispatch(
-            new GetYoutubeCommentsByNextPageTokenCommand(),
-            job.videoId,
-            job.nextPageToken
-          );
-        }
+        if (job != null) {
+          JobCollection.update({
+            _id: job._id
+          }, {
+            $set: {
+              status: _STATES.IN_PROGRESS
+            }
+          });
 
-        JobCollection.remove({
-          _id: job._id
-        });
-      }
-    }, 3000);
+          if (job.type === 'video') {
+            dispatch(
+              new GetYoutubeCommentsByVideoIdCommand(),
+              job.videoId
+            );
+          } else if (job.type === 'comments') {
+            dispatch(
+              new GetYoutubeCommentsByNextPageTokenCommand(),
+              job.videoId,
+              job.nextPageToken
+            );
+          }
+
+          JobCollection.remove({
+            _id: job._id
+          });
+        }
+      }, parseInt(Meteor.settings.queue.timer));
+    }
   };
 
   return {
