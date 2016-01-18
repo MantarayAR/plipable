@@ -87,7 +87,7 @@ var $out = React.createClass({
 
     var link = 'https://www.plipable.com/v/' + this.props.videoId;
     var title = this.props.title;
-    var text = encodeURIComponent('Watch reactions to "' + title + '" ' + link + ' on #Plipable');
+    var text = encodeURIComponent('Come watch reactions to "' + title + '" ' + link + ' on #Plipable');
     // var keywords = encodeURIComponent(['todo'].join(','));
     var href = 'https://twitter.com/intent/tweet?text=' + text; //+ '&hashtags=' + keywords;
 
