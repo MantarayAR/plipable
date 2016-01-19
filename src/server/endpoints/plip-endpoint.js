@@ -54,8 +54,9 @@ Meteor.methods({
     dispatch(new CheckPlayerIsLoggedInCommand());
 
     var username = Meteor.user().services.twitter.screenName;
+    var userId = Meteor.userId();
 
-    dispatch(new UserDeletePlipCommand(), plipId, username);
+    dispatch(new UserDeletePlipCommand(), plipId, username, userId);
   },
   deleteWithToken: function(plipId, userId, token) {
     check(plipId, String);

@@ -6,7 +6,7 @@ Meteor.users.deny({
 
 if ( Meteor.isServer ) {
   /**
-   * Publish everyone's github id
+   * Publish everyone's twitter screenname
    *
    * Careful! DON'T ACCIDENTLY EXPOSE
    * SECRET PROPERTIES

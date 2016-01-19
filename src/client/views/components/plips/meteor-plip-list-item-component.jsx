@@ -7,13 +7,16 @@ MeteorPlipListItemComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     var username = null;
+    var userId = null;
 
     if (Meteor.user()) {
       username  = Meteor.user().services.twitter.screenName;
+      userId = Meteor.userId();
     }
 
     return {
-      username: username
+      username: username,
+      userId: userId
     }
   },
   handleDelete(plipId) {
@@ -30,7 +33,10 @@ MeteorPlipListItemComponent = React.createClass({
     });
   },
   render() {
-    var canDelete = this.data.username === this.props.plip.username;
+    var canDelete = (
+        this.data.username === this.props.plip.username ||
+        Roles.userIsInRole(this.data.userId, ['admin'], Roles.GLOBAL_GROUP)
+    );
 
     return (
       <PlipListItemComponent
